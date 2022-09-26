@@ -9,19 +9,18 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import uet.oop.bomberman.entities.Bomber;
-import uet.oop.bomberman.entities.Entity;
-import uet.oop.bomberman.entities.Grass;
-import uet.oop.bomberman.entities.Wall;
+import uet.oop.bomberman.entities.*;
 import uet.oop.bomberman.graphics.Sprite;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BombermanGame extends Application {
     
-    public static final int WIDTH = 20;
-    public static final int HEIGHT = 15;
+    public static final int WIDTH = 31;
+    public static final int HEIGHT = 13;
     
     private GraphicsContext gc;
     private Canvas canvas;
@@ -95,19 +94,65 @@ public class BombermanGame extends Application {
     }
 
     public void createMap() {
-        for (int i = 0; i < WIDTH; i++) {
-            for (int j = 0; j < HEIGHT; j++) {
-                Entity object;
-                if (j == 0 || j == HEIGHT - 1 || i == 0 || i == WIDTH - 1) {
-                    object = new Wall(i, j, Sprite.wall.getFxImage());
+        try {
+            FileReader reader = new FileReader("res/levels/Level1.txt");
+            BufferedReader buffRead = new BufferedReader(reader);
+            String firstLine = buffRead.readLine();
+            System.out.println(firstLine);
+            int L = 0, R = 0, C = 0;
+
+            String[] tokens = firstLine.split(" ");
+            L = Integer.parseInt(tokens[0]);
+            R = Integer.parseInt(tokens[1]);
+            C = Integer.parseInt(tokens[2]);
+
+            char[][] matrix = null;
+
+            matrix = new char[R][C];
+
+            for (int i = 0; i < R; i++) {
+                String line = buffRead.readLine();
+                for (int j = 0; j < C; j++) {
+                    char character = line.charAt(j);
+                    matrix[i][j] = character;
                 }
-                else {
-                    object = new Grass(i, j, Sprite.grass.getFxImage());
-                }
-                stillObjects.add(object);
             }
+
+            for (int i = 0; i < R; i++) {
+                for (int j = 0; j < C; j++) {
+                    Entity object = null;
+                    switch (matrix[i][j]) {
+                        case '#': {
+                            object = new Wall(j, i, Sprite.wall.getFxImage());
+                            stillObjects.add(object);
+                            break;
+                        }
+                        case '*': {
+                            object = new Brick(j, i, Sprite.brick.getFxImage());
+                            stillObjects.add(object);
+                            break;
+                        }
+//                      case 'x': {
+//                          object = new Portal(j, i, Sprite.portal.getFxImage());
+//                          stillObjects.add(object);
+//                      }
+//                      case '1': {
+//                          object = new Balloom(j, i, Sprite.balloom_left1.getFxImage());
+//                      }
+//                      case '2': {
+//                          object = new Oneal(j, i, Sprite.oneal_left1.getFxImage());
+//                      }
+                        default: {
+                            object = new Grass(j, i, Sprite.grass.getFxImage());
+                            stillObjects.add(object);
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    }
+}
 
     public void update() {
         entities.forEach(Entity::update);
