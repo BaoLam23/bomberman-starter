@@ -49,39 +49,42 @@ public class BombermanGame extends Application {
         stage.setScene(scene);
         stage.show();
 
-        // test
-        ArrayList<String> input = new ArrayList<String>();
+        Entity bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
+        entities.add(bomberman);
 
         scene.setOnKeyPressed(
                 new EventHandler<KeyEvent>()
                 {
                     public void handle(KeyEvent e)
                     {
-                        String code = e.getCode().toString();
-
-                        // only add once... prevent duplicates
-                        if ( !input.contains(code) )
-                            input.add( code );
+                        switch (e.getCode()) {
+                            case UP: {
+                                ((Bomber) bomberman).moveUp();
+                                break;
+                            }
+                            case DOWN: {
+                                ((Bomber) bomberman).moveDown();
+                                break;
+                            }
+                            case LEFT: {
+                                ((Bomber) bomberman).moveLeft();
+                                break;
+                            }
+                            case RIGHT: {
+                                ((Bomber) bomberman).moveRight();
+                                break;
+                            }
+                        }
                     }
                 });
 
-        scene.setOnKeyReleased(
-                new EventHandler<KeyEvent>()
-                {
-                    public void handle(KeyEvent e)
-                    {
-                        String code = e.getCode().toString();
-                        input.remove( code );
-                    }
-                });
+
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long l) {
                 render();
-                //update();
-                if (input.contains("RIGHT")) {
-                    update();
-                }
+                update();
+
             }
         };
 
@@ -89,8 +92,7 @@ public class BombermanGame extends Application {
 
         createMap();
 
-        Entity bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
-        entities.add(bomberman);
+
     }
 
     public void createMap() {

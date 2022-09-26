@@ -14,6 +14,18 @@ public class Bomber extends Entity {
 
     @Override
     public void update() {
+
+    }
+    public void moveUp() {
+        y--;
+    }
+    public void moveDown() {
+        y++;
+    }
+    public void moveLeft() {
+        x--;
+    }
+    public void moveRight() {
         x++;
     }
 }
