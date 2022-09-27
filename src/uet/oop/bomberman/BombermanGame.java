@@ -138,12 +138,20 @@ public class BombermanGame extends Application {
 //                          object = new Portal(j, i, Sprite.portal.getFxImage());
 //                          stillObjects.add(object);
 //                      }
-//                      case '1': {
-//                          object = new Balloom(j, i, Sprite.balloom_left1.getFxImage());
-//                      }
-//                      case '2': {
-//                          object = new Oneal(j, i, Sprite.oneal_left1.getFxImage());
-//                      }
+                      case '1': {
+                          object = new Grass(j, i, Sprite.grass.getFxImage());
+                          stillObjects.add(object);
+                          object = new Balloom(j, i, Sprite.balloom_left1.getFxImage());
+                          entities.add(object);
+                          break;
+                      }
+                      case '2': {
+                          object = new Grass(j, i, Sprite.grass.getFxImage());
+                          stillObjects.add(object);
+                          object = new Oneal(j, i, Sprite.oneal_left1.getFxImage());
+                          entities.add(object);
+                          break;
+                      }
                         default: {
                             object = new Grass(j, i, Sprite.grass.getFxImage());
                             stillObjects.add(object);
