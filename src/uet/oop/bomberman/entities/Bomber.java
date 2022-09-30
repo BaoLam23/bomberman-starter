@@ -6,6 +6,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
+import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
+
 public class Bomber extends Entity {
 
     public Bomber(int x, int y, Image img) {
@@ -17,15 +19,15 @@ public class Bomber extends Entity {
 
     }
     public void moveUp() {
-        y--;
+        y -= SCALED_SIZE;
     }
     public void moveDown() {
-        y++;
+        y += SCALED_SIZE;
     }
     public void moveLeft() {
-        x--;
+        x -= SCALED_SIZE;
     }
     public void moveRight() {
-        x++;
+        x += SCALED_SIZE;
     }
 }
