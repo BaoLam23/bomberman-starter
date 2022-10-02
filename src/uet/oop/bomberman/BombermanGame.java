@@ -24,9 +24,9 @@ public class BombermanGame extends Application {
     
     private GraphicsContext gc;
     private Canvas canvas;
-    private List<Entity> entities = new ArrayList<>();
-    private List<Entity> stillObjects = new ArrayList<>();
-
+    public static List<Entity> entities = new ArrayList<>();
+    public static List<Entity> stillObjects = new ArrayList<>();
+    public static Entity bomberman;
 
     public static void main(String[] args) {
         Application.launch(BombermanGame.class);
@@ -49,7 +49,7 @@ public class BombermanGame extends Application {
         stage.setScene(scene);
         stage.show();
 
-        Entity bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
+        bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
         entities.add(bomberman);
 
         scene.setOnKeyPressed(
@@ -72,6 +72,10 @@ public class BombermanGame extends Application {
                             }
                             case RIGHT: {
                                 ((Bomber) bomberman).moveRight();
+                                break;
+                            }
+                            case SPACE: {
+                                Bomb.putBomb();
                                 break;
                             }
                         }
@@ -166,6 +170,7 @@ public class BombermanGame extends Application {
 
     public void update() {
         entities.forEach(Entity::update);
+        stillObjects.forEach(Entity::update);
     }
 
     public void render() {
