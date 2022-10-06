@@ -28,11 +28,14 @@ public class Bomb extends Entity {
             int x = Math.round(bomberman.getX() / 32);
             int y = Math.round(bomberman.getY() / 32);
             bomb = new Bomb(x, y, Sprite.bomb.getFxImage());
+            //bomb = new Bomb(x, y, Sprite.bomb_exploded2.getFxImage());
             stillObjects.add(bomb);
             hasBomb = true;
             CompletableFuture.delayedExecutor(3, TimeUnit.SECONDS).execute(() -> {
                 // Your code here executes after 3 seconds!
                 stillObjects.remove(bomb);
+                bomb = new Bomb(x, y, Sprite.bomb_exploded2.getFxImage());
+                stillObjects.add(bomb);
                 hasBomb = false;
             });
         }
