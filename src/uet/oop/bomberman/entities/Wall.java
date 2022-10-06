@@ -8,6 +8,11 @@ public class Wall extends Entity {
         super(x, y, img);
     }
 
+
+    @Override
+    public void setSprite(Image newSprite) {
+    }
+
     @Override
     public void update() {
 

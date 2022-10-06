@@ -9,17 +9,18 @@ import java.util.concurrent.TimeUnit;
 import static uet.oop.bomberman.BombermanGame.bomberman;
 import static uet.oop.bomberman.BombermanGame.stillObjects;
 
-
-
 public class Bomb extends Entity {
+
     private static Entity bomb;
     private static boolean hasBomb = false;
+
     public Bomb(int x, int y, Image img) {
         super(x, y, img);
     }
-    @Override
-    public void update() {
 
+    @Override
+    public void setSprite(Image newSprite) {
+        img = newSprite;
     }
 
     public static void putBomb() {
@@ -35,5 +36,10 @@ public class Bomb extends Entity {
                 hasBomb = false;
             });
         }
+    }
+
+    @Override
+    public void update() {
+
     }
 }

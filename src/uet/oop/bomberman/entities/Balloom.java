@@ -12,4 +12,9 @@ public class Balloom extends Entity {
     public void update() {
 
     }
+
+    @Override
+    public void setSprite(Image newSprite) {
+
+    }
 }

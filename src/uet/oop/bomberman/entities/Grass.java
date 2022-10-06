@@ -9,6 +9,10 @@ public class Grass extends Entity {
     }
 
     @Override
+    public void setSprite(Image newSprite) {
+    }
+
+    @Override
     public void update() {
 
     }

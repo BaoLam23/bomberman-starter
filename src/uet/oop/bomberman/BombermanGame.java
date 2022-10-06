@@ -7,6 +7,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import uet.oop.bomberman.entities.*;
@@ -60,24 +61,29 @@ public class BombermanGame extends Application {
                         switch (e.getCode()) {
                             case UP: {
                                 ((Bomber) bomberman).moveUp();
+                                bomberman.setSprite(Sprite.player_up.getFxImage());
                                 break;
                             }
                             case DOWN: {
                                 ((Bomber) bomberman).moveDown();
+                                bomberman.setSprite(Sprite.player_down.getFxImage());
                                 break;
                             }
                             case LEFT: {
                                 ((Bomber) bomberman).moveLeft();
+                                bomberman.setSprite(Sprite.player_left.getFxImage());
                                 break;
                             }
                             case RIGHT: {
                                 ((Bomber) bomberman).moveRight();
+                                bomberman.setSprite(Sprite.player_right.getFxImage());
                                 break;
                             }
                             case SPACE: {
                                 Bomb.putBomb();
                                 break;
                             }
+
                         }
                     }
                 });
@@ -122,6 +128,8 @@ public class BombermanGame extends Application {
                     char character = line.charAt(j);
                     matrix[i][j] = character;
                 }
+
+
             }
 
             for (int i = 0; i < R; i++) {

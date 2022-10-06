@@ -6,6 +6,12 @@ public class Brick extends Entity {
     public Brick(int x, int y, Image img) {
         super(x, y, img);
     }
+
+    @Override
+    public void setSprite(Image newSprite) {
+        img = newSprite;
+    }
+
     @Override
     public void update() {
 
