@@ -5,6 +5,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import uet.oop.bomberman.control.Blocked;
+
+import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
 
 public class Bomber extends Entity {
 
@@ -33,15 +36,23 @@ public class Bomber extends Entity {
     }
 
     public void moveUp() {
-        y -= 32;
+        if (!Blocked.blockedUp()) {
+            y -= SCALED_SIZE;
+        }
     }
     public void moveDown() {
-        y += 32;
+        if (!Blocked.blockedDown()) {
+            y += SCALED_SIZE;
+        }
     }
     public void moveLeft() {
-        x -= 32;
+        if (!Blocked.blockedLeft()) {
+            x -= SCALED_SIZE;
+        }
     }
     public void moveRight() {
-        x +=32;
+        if (!Blocked.blockedRight()) {
+            x += SCALED_SIZE;
+        }
     }
 }
