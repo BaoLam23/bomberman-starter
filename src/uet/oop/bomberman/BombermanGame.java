@@ -172,6 +172,8 @@ public class BombermanGame extends Application {
                             break;
                         }
                         case '*': {
+                            object = new Grass(j, i, Sprite.grass.getFxImage());
+                            stillObjects.add(object);
                             object = new Brick(j, i, Sprite.brick.getFxImage());
                             stillObjects.add(object);
                             break;
