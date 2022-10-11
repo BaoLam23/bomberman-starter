@@ -16,6 +16,9 @@ public abstract class Entity {
 
     protected Image img;
 
+    protected int spriteCounter = 0;
+    protected int spriteNum = 1;
+
     //Khởi tạo đối tượng, chuyển từ tọa độ đơn vị sang tọa độ trong canvas
     public Entity( int xUnit, int yUnit, Image img) {
         this.x = xUnit * Sprite.SCALED_SIZE;
@@ -45,4 +48,12 @@ public abstract class Entity {
     public abstract void update();
 
     public abstract void setSprite(Image newSprite);
+
+    public int getSpriteNum() {
+        return spriteNum;
+    }
+
+    public int getSpriteCounter() {
+        return spriteCounter;
+    }
 }

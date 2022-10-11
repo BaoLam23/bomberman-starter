@@ -14,7 +14,17 @@ public class Bomber extends Entity {
 
     @Override
     public void update() {
+        spriteCounter++;
 
+        if (spriteCounter > 10) {
+            if (spriteNum == 1 || spriteNum == 2)
+                spriteNum++;
+
+            else if (spriteNum == 3)
+                spriteNum = 1;
+
+            spriteCounter = 0;
+        }
     }
 
     @Override

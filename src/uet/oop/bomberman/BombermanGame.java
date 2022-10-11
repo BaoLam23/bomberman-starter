@@ -17,6 +17,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 public class BombermanGame extends Application {
     
@@ -61,22 +63,50 @@ public class BombermanGame extends Application {
                         switch (e.getCode()) {
                             case UP: {
                                 ((Bomber) bomberman).moveUp();
-                                bomberman.setSprite(Sprite.player_up.getFxImage());
+                                if(bomberman.getSpriteNum() == 1)
+                                    bomberman.setSprite(Sprite.player_up.getFxImage());
+
+                                if(bomberman.getSpriteNum() == 2)
+                                    bomberman.setSprite(Sprite.player_up_1.getFxImage());
+
+                                if(bomberman.getSpriteNum() == 3)
+                                    bomberman.setSprite(Sprite.player_up_2.getFxImage());
                                 break;
                             }
                             case DOWN: {
                                 ((Bomber) bomberman).moveDown();
-                                bomberman.setSprite(Sprite.player_down.getFxImage());
+                                if(bomberman.getSpriteNum() == 1)
+                                    bomberman.setSprite(Sprite.player_down.getFxImage());
+
+                                if(bomberman.getSpriteNum() == 2)
+                                    bomberman.setSprite(Sprite.player_down_1.getFxImage());
+
+                                if(bomberman.getSpriteNum() == 3)
+                                    bomberman.setSprite(Sprite.player_down_2.getFxImage());
                                 break;
                             }
                             case LEFT: {
                                 ((Bomber) bomberman).moveLeft();
-                                bomberman.setSprite(Sprite.player_left.getFxImage());
+                                if(bomberman.getSpriteNum() == 1)
+                                    bomberman.setSprite(Sprite.player_left.getFxImage());
+
+                                if(bomberman.getSpriteNum() == 2)
+                                    bomberman.setSprite(Sprite.player_left_1.getFxImage());
+
+                                if(bomberman.getSpriteNum() == 3)
+                                    bomberman.setSprite(Sprite.player_left_2.getFxImage());
                                 break;
                             }
                             case RIGHT: {
                                 ((Bomber) bomberman).moveRight();
-                                bomberman.setSprite(Sprite.player_right.getFxImage());
+                                if(bomberman.getSpriteNum() == 1)
+                                    bomberman.setSprite(Sprite.player_right.getFxImage());
+
+                                if(bomberman.getSpriteNum() == 2)
+                                    bomberman.setSprite(Sprite.player_right_1.getFxImage());
+
+                                if(bomberman.getSpriteNum() == 3)
+                                    bomberman.setSprite(Sprite.player_right_2.getFxImage());
                                 break;
                             }
                             case SPACE: {
