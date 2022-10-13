@@ -18,12 +18,16 @@ public abstract class Entity {
 
     protected int spriteCounter = 0;
     protected int spriteNum = 1;
-
+    private boolean life = true;
     //Khởi tạo đối tượng, chuyển từ tọa độ đơn vị sang tọa độ trong canvas
     public Entity( int xUnit, int yUnit, Image img) {
         this.x = xUnit * Sprite.SCALED_SIZE;
         this.y = yUnit * Sprite.SCALED_SIZE;
         this.img = img;
+    }
+
+    public Entity(boolean life) {
+        this.life = life;
     }
 
     public int getX() {
@@ -40,6 +44,14 @@ public abstract class Entity {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public void setLife(boolean life) {
+        this.life = life;
+    }
+
+    public boolean isLife() {
+        return life;
     }
 
     public void render(GraphicsContext gc) {
