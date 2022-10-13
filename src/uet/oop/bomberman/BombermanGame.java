@@ -10,6 +10,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import uet.oop.bomberman.control.Sound;
 import uet.oop.bomberman.entities.*;
 import uet.oop.bomberman.graphics.Sprite;
 
@@ -32,6 +33,7 @@ public class BombermanGame extends Application {
     public static List<Entity> killObjects = new ArrayList<>();
     public static Entity bomberman;
 
+
     public static void main(String[] args) {
         Application.launch(BombermanGame.class);
     }
@@ -41,6 +43,7 @@ public class BombermanGame extends Application {
         // Tao Canvas
         canvas = new Canvas(Sprite.SCALED_SIZE * WIDTH, Sprite.SCALED_SIZE * HEIGHT);
         gc = canvas.getGraphicsContext2D();
+
 
         // Tao root container
         Group root = new Group();
@@ -52,6 +55,9 @@ public class BombermanGame extends Application {
         // Them scene vao stage
         stage.setScene(scene);
         stage.show();
+
+        // play background music
+        Sound.backgroundMusic();
 
         bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
         entities.add(bomberman);
