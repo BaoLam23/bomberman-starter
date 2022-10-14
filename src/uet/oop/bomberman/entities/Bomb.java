@@ -39,7 +39,7 @@ public class Bomb extends Entity {
             exploded = false;
 
             //bomb = new Bomb(x, y, Sprite.bomb_exploded2.getFxImage());
-            stillObjects.add(bomb);
+            killObjects.add(bomb);
 
             Sound.bombPlaced();
             CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS).execute(() -> {
@@ -56,6 +56,7 @@ public class Bomb extends Entity {
 //                stillObjects.add(bomb);
 
                 Sound.bombExploding();
+                hasBomb = false;
                 exploded = true;
 
                 flameLeft = new Flame(x - 1, y, Sprite.explosion_horizontal_left_last.getFxImage());
@@ -65,33 +66,34 @@ public class Bomb extends Entity {
 
 
                 if (canExplode(x - 1, y))
-                    stillObjects.add(flameLeft);
+                    killObjects.add(flameLeft);
 
                 if (canExplode(x + 1, y))
-                    stillObjects.add(flameRight);
+                    killObjects.add(flameRight);
 
                 if (canExplode(x + 1, y))
-                    stillObjects.add(flameDown);
+                    killObjects.add(flameDown);
 
                 if (canExplode(x, y - 1))
-                    stillObjects.add(flameTop);
+                    killObjects.add(flameTop);
             });
 
             CompletableFuture.delayedExecutor(4, TimeUnit.SECONDS).execute(() -> {
-                hasBomb = false;
-                stillObjects.remove(bomb);
+//                hasBomb = false;
+                killObjects.remove(bomb);
 
-                if (canExplode(x - 1, y))
-                    stillObjects.remove(flameLeft);
-
-                if (canExplode(x + 1, y))
-                    stillObjects.remove(flameRight);
-
-                if (canExplode(x, y + 1))
-                    stillObjects.remove(flameDown);
-
-                if (canExplode(x, y - 1))
-                    stillObjects.remove(flameTop);
+//                if (canExplode(x - 1, y))
+//                    stillObjects.remove(flameLeft);
+//
+//                if (canExplode(x + 1, y))
+//                    stillObjects.remove(flameRight);
+//
+//                if (canExplode(x, y + 1))
+//                    stillObjects.remove(flameDown);
+//
+//                if (canExplode(x, y - 1))
+//                    stillObjects.remove(flameTop);
+                killObjects.clear();
             });
         }
     }
