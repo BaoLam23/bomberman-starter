@@ -49,7 +49,7 @@ public class Bomb extends Entity {
             });
 
 
-            CompletableFuture.delayedExecutor(3, TimeUnit.SECONDS).execute(() -> {
+            CompletableFuture.delayedExecutor(2, TimeUnit.SECONDS).execute(() -> {
                 // Your code here executes after 3 seconds!
 //                stillObjects.remove(bomb);
 //                bomb = new Bomb(x, y, Sprite.bomb_exploded2.getFxImage());

@@ -1,0 +1,52 @@
+package uet.oop.bomberman.entities.Animals;
+
+import javafx.scene.image.Image;
+import uet.oop.bomberman.entities.Entity;
+
+import java.util.concurrent.TimeUnit;
+
+import static uet.oop.bomberman.BombermanGame.entities;
+import static uet.oop.bomberman.BombermanGame.stillObjects;
+
+public class Balloom extends Animal {
+
+    public Balloom(int x, int y, Image img) {
+        super(x, y, img);
+    }
+
+    @Override
+    public void update() {
+//        for (Entity e : entities) {
+//            if (e instanceof Balloom) {
+//                ((Balloom) e).moveLeft();
+//                System.out.println("found");
+//            }
+//        }
+
+        int dir = (int) (Math.random() * 4 + 1);
+        switch (dir) {
+            case 1: {
+                this.moveLeft();
+                break;
+            }
+            case 2: {
+                this.moveRight();
+                break;
+            }
+            case 3: {
+                this.moveUp();
+                break;
+            }
+            case 4: {
+                this.moveDown();
+                break;
+            }
+        }
+
+    }
+
+    @Override
+    public void setSprite(Image newSprite) {
+
+    }
+}

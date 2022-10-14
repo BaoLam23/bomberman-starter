@@ -7,19 +7,20 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import uet.oop.bomberman.control.Sound;
 import uet.oop.bomberman.entities.*;
+import uet.oop.bomberman.entities.Animals.Animal;
+import uet.oop.bomberman.entities.Animals.Balloom;
+import uet.oop.bomberman.entities.Animals.Bomber;
+import uet.oop.bomberman.entities.Animals.Oneal;
 import uet.oop.bomberman.graphics.Sprite;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 
 public class BombermanGame extends Application {
     
@@ -31,7 +32,7 @@ public class BombermanGame extends Application {
     public static List<Entity> entities = new ArrayList<>();
     public static List<Entity> stillObjects = new ArrayList<>();
     public static List<Entity> killObjects = new ArrayList<>();
-    public static Entity bomberman;
+    public static Animal bomberman;
 
 
     public static void main(String[] args) {
@@ -60,7 +61,7 @@ public class BombermanGame extends Application {
         Sound.backgroundMusic();
 
         bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
-        entities.add(bomberman);
+        //entities.add(bomberman);
 
         scene.setOnKeyPressed(
                 new EventHandler<KeyEvent>()
@@ -222,6 +223,7 @@ public class BombermanGame extends Application {
         entities.forEach(Entity::update);
         stillObjects.forEach(Entity::update);
         killObjects.forEach(Entity::update);
+        bomberman.update();
     }
 
     public void render() {
@@ -229,5 +231,6 @@ public class BombermanGame extends Application {
         stillObjects.forEach(g -> g.render(gc));
         killObjects.forEach(g -> g.render(gc));
         entities.forEach(g -> g.render(gc));
+        bomberman.render(gc);
     }
 }
