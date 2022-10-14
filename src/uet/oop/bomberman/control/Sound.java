@@ -13,4 +13,9 @@ public class Sound {
         buzzer.setCycleCount(AudioClip.INDEFINITE);
         buzzer.play();
     }
+
+    public static void bombSound() {
+        AudioClip explosion = new AudioClip(Sound.class.getResource("/sounds/bombSound.mp3").toExternalForm());
+        explosion.play();
+    }
 }

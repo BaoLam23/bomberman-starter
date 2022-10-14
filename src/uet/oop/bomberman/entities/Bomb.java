@@ -1,6 +1,7 @@
 package uet.oop.bomberman.entities;
 
 import javafx.scene.image.Image;
+import uet.oop.bomberman.control.Sound;
 import uet.oop.bomberman.graphics.Sprite;
 
 import java.util.concurrent.CompletableFuture;
@@ -45,6 +46,7 @@ public class Bomb extends Entity {
 //                stillObjects.remove(bomb);
 //                bomb = new Bomb(x, y, Sprite.bomb_exploded2.getFxImage());
 //                stillObjects.add(bomb);
+                Sound.bombSound();
                 exploded = true;
 
                 flameLeft = new Flame(x - 1, y, Sprite.explosion_horizontal_left_last.getFxImage());
