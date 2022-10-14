@@ -8,7 +8,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 import static uet.oop.bomberman.BombermanGame.*;
-
+import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
 public class Bomb extends Entity {
 
     private static Entity bomb;
@@ -154,7 +154,10 @@ public class Bomb extends Entity {
 
     public static Entity getAt(int x, int y) {
         for (Entity e : stillObjects) {
-            if (x == e.getX() && y == e.getY()) {
+//            if (x == e.getX() && y == e.getY()) {
+//                return e;
+//            }
+            if (x == Math.round(e.getX() / 32) && y == Math.round(e.getY() / 32)) {
                 return e;
             }
         }
