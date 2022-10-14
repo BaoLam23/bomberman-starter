@@ -11,10 +11,11 @@ public class Sound {
     public static void backgroundMusic() {
         AudioClip buzzer = new AudioClip(Sound.class.getResource("/sounds/background.mp3").toExternalForm());
         buzzer.setCycleCount(AudioClip.INDEFINITE);
+        buzzer.setVolume(0.2);
         buzzer.play();
     }
 
-    public static void bombExplosion() {
+    public static void bombExploding() {
         AudioClip explosion = new AudioClip(Sound.class.getResource("/sounds/Effects/Bomb Explodes.wav").toExternalForm());
         explosion.play();
     }
@@ -22,5 +23,10 @@ public class Sound {
     public static void bombBouncing() {
         AudioClip bounce = new AudioClip(Sound.class.getResource("/sounds/Effects/Bomb Bouncing on Blocks.wav").toExternalForm());
         bounce.play();
+    }
+
+    public static void bombPlaced() {
+        AudioClip explosion = new AudioClip(Sound.class.getResource("/sounds/Effects/Place Bomb.wav").toExternalForm());
+        explosion.play();
     }
 }

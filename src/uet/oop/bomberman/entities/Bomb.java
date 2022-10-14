@@ -41,7 +41,7 @@ public class Bomb extends Entity {
             //bomb = new Bomb(x, y, Sprite.bomb_exploded2.getFxImage());
             stillObjects.add(bomb);
 
-            Sound.bombBouncing();
+            Sound.bombPlaced();
             CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS).execute(() -> {
                 Sound.bombBouncing();
 
@@ -55,7 +55,7 @@ public class Bomb extends Entity {
 //                bomb = new Bomb(x, y, Sprite.bomb_exploded2.getFxImage());
 //                stillObjects.add(bomb);
 
-                Sound.bombExplosion();
+                Sound.bombExploding();
                 exploded = true;
 
                 flameLeft = new Flame(x - 1, y, Sprite.explosion_horizontal_left_last.getFxImage());
