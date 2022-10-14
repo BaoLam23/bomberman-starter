@@ -14,8 +14,13 @@ public class Sound {
         buzzer.play();
     }
 
-    public static void bombSound() {
-        AudioClip explosion = new AudioClip(Sound.class.getResource("/sounds/bombSound.mp3").toExternalForm());
+    public static void bombExplosion() {
+        AudioClip explosion = new AudioClip(Sound.class.getResource("/sounds/Effects/Bomb Explodes.wav").toExternalForm());
         explosion.play();
+    }
+
+    public static void bombBouncing() {
+        AudioClip bounce = new AudioClip(Sound.class.getResource("/sounds/Effects/Bomb Bouncing on Blocks.wav").toExternalForm());
+        bounce.play();
     }
 }
