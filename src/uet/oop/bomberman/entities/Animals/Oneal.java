@@ -17,15 +17,16 @@ public class Oneal extends Animal {
         super(x, y, img);
     }
 
+    public void bombKillOnel() {
+        //this.setSprite(Sprite.Oneal_dead.getFxImage());
+        entities.remove(this);
+    }
     @Override
     public void update() {
-//        for (Entity e : entities) {
-//            if (e instanceof Balloom) {
-//                ((Balloom) e).moveLeft();
-//                System.out.println("found");
-//            }
-//        }
-
+        checkBomb(this);
+        if (!this.isLife()) {
+            this.bombKillOnel();
+        }
         moveNum++;
 
         int dir = (int) (Math.random() * 4 + 1);
