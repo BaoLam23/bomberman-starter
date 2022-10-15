@@ -159,7 +159,7 @@ public class Bomb extends Entity {
 //            if (x == e.getX() && y == e.getY()) {
 //                return e;
 //            }
-            if (x == Math.round(e.getX() / 32) && y == Math.round(e.getY() / 32)) {
+            if (x == Math.ceil(e.getX() / 32) && y == Math.ceil(e.getY() / 32)) {
                 return e;
             }
         }

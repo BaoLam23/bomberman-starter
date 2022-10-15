@@ -1,14 +1,17 @@
 package uet.oop.bomberman.entities.Animals;
 
 import javafx.scene.image.Image;
+import uet.oop.bomberman.control.Sound;
 import uet.oop.bomberman.entities.Entity;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 import static uet.oop.bomberman.BombermanGame.entities;
 import static uet.oop.bomberman.BombermanGame.stillObjects;
 
 public class Balloom extends Animal {
+    private int moveNum = 1;
 
     public Balloom(int x, int y, Image img) {
         super(x, y, img);
@@ -23,30 +26,36 @@ public class Balloom extends Animal {
 //            }
 //        }
 
-        int dir = (int) (Math.random() * 4 + 1);
-        switch (dir) {
-            case 1: {
-                this.moveLeft();
-                break;
-            }
-            case 2: {
-                this.moveRight();
-                break;
-            }
-            case 3: {
-                this.moveUp();
-                break;
-            }
-            case 4: {
-                this.moveDown();
-                break;
-            }
-        }
+        moveNum++;
 
+        int dir = (int) (Math.random() * 4 + 1);
+        if(moveNum > 40) {
+            switch (dir) {
+                case 1: {
+                    this.moveLeft();
+                    break;
+                }
+                case 2: {
+                    this.moveRight();
+                    break;
+                }
+                case 3: {
+                    this.moveUp();
+                    break;
+                }
+                case 4: {
+                    this.moveDown();
+                    break;
+                }
+            }
+
+            moveNum = 1;
+        }
     }
 
     @Override
     public void setSprite(Image newSprite) {
 
     }
+
 }
