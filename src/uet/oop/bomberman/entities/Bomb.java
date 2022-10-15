@@ -56,7 +56,7 @@ public class Bomb extends Entity {
 //                stillObjects.add(bomb);
 
                 Sound.bombExploding();
-                hasBomb = false;
+                //hasBomb = false;
                 exploded = true;
 
                 flameLeft = new Flame(x - 1, y, Sprite.explosion_horizontal_left_last.getFxImage());
@@ -65,34 +65,30 @@ public class Bomb extends Entity {
                 flameTop = new Flame(x, y - 1, Sprite.explosion_vertical_top_last.getFxImage());
 
 
-                if (canExplode(x - 1, y))
+                if (canExplode(x - 1, y)) {
                     killObjects.add(flameLeft);
+                }
 
-                if (canExplode(x + 1, y))
+
+                if (canExplode(x + 1, y)) {
                     killObjects.add(flameRight);
+                }
 
-                if (canExplode(x + 1, y))
+
+                if (canExplode(x , y + 1)) {
                     killObjects.add(flameDown);
+                }
 
-                if (canExplode(x, y - 1))
+
+                if (canExplode(x, y - 1)) {
                     killObjects.add(flameTop);
+                }
+                breakBrick(x, y);
             });
 
             CompletableFuture.delayedExecutor(4, TimeUnit.SECONDS).execute(() -> {
-//                hasBomb = false;
-                killObjects.remove(bomb);
-
-//                if (canExplode(x - 1, y))
-//                    stillObjects.remove(flameLeft);
-//
-//                if (canExplode(x + 1, y))
-//                    stillObjects.remove(flameRight);
-//
-//                if (canExplode(x, y + 1))
-//                    stillObjects.remove(flameDown);
-//
-//                if (canExplode(x, y - 1))
-//                    stillObjects.remove(flameTop);
+                hasBomb = false;
+                //killObjects.remove(bomb);
                 killObjects.clear();
             });
         }
@@ -159,7 +155,7 @@ public class Bomb extends Entity {
 //            if (x == e.getX() && y == e.getY()) {
 //                return e;
 //            }
-            if (x == Math.ceil(e.getX() / 32) && y == Math.ceil(e.getY() / 32)) {
+            if (x == Math.round(e.getX() / 32) && y == Math.round(e.getY() / 32)) {
                 return e;
             }
         }
@@ -171,5 +167,29 @@ public class Bomb extends Entity {
             return false;
 
         return true;
+    }
+
+    private static void breakBrick(int x, int y) {
+        Brick b1 = null, b2 = null, b3 = null, b4 = null;
+        for (Entity e : stillObjects) {
+            if (e instanceof Brick) {
+                if (Math.round(e.getX() / 32) == x - 1 && Math.round(e.getY() / 32) == y) {
+                    b1 = (Brick) e;
+                }
+                if (Math.round(e.getX() / 32) == x + 1 && Math.round(e.getY() / 32) == y) {
+                    b2 = (Brick) e;
+                }
+                if (Math.round(e.getX() / 32) == x && Math.round(e.getY() / 32) == y + 1) {
+                    b3 = (Brick) e;
+                }
+                if (Math.round(e.getX() / 32) == x && Math.round(e.getY() / 32) == y - 1) {
+                    b4 = (Brick) e;
+                }
+            }
+        }
+        if (b1 != null) stillObjects.remove(b1);
+        if (b2 != null) stillObjects.remove(b2);
+        if (b3 != null) stillObjects.remove(b3);
+        if (b4 != null) stillObjects.remove(b4);
     }
 }

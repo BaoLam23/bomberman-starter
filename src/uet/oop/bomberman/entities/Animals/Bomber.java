@@ -40,9 +40,20 @@ public class Bomber extends Animal {
             }
         }
     }
+
+    public void checkEnemy() {
+        for (Entity entity : entities) {
+            if (entity instanceof Balloom || entity instanceof Oneal) {
+                if (entity.getX() == bomberman.getX() && entity.getY() == bomberman.getY()) {
+                    bomberman.setLife(false);
+                }
+            }
+        }
+    }
     @Override
     public void update() {
         checkBomb();
+        checkEnemy();
         spriteCounter++;
 
         if (spriteCounter > 10) {
