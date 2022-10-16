@@ -65,17 +65,25 @@ public class Bomb extends Entity {
                 flameTop = new Flame(x, y - 1, Sprite.explosion_vertical_top_last.getFxImage());
 
 
-                if (canExplode(x - 1, y))
+                if (canExplode(x - 1, y)) {
                     killObjects.add(flameLeft);
+                }
 
-                if (canExplode(x + 1, y))
+
+                if (canExplode(x + 1, y)) {
                     killObjects.add(flameRight);
+                }
 
-                if (canExplode(x, y + 1))
+
+                if (canExplode(x , y + 1)) {
                     killObjects.add(flameDown);
+                }
 
-                if (canExplode(x, y - 1))
+
+                if (canExplode(x, y - 1)) {
                     killObjects.add(flameTop);
+                }
+                breakBrick(x, y);
             });
 
             CompletableFuture.delayedExecutor(4, TimeUnit.SECONDS).execute(() -> {
@@ -175,5 +183,29 @@ public class Bomb extends Entity {
             return false;
 
         return true;
+    }
+
+    private static void breakBrick(int x, int y) {
+        Brick b1 = null, b2 = null, b3 = null, b4 = null;
+        for (Entity e : stillObjects) {
+            if (e instanceof Brick) {
+                if (Math.round(e.getX() / 32) == x - 1 && Math.round(e.getY() / 32) == y) {
+                    b1 = (Brick) e;
+                }
+                if (Math.round(e.getX() / 32) == x + 1 && Math.round(e.getY() / 32) == y) {
+                    b2 = (Brick) e;
+                }
+                if (Math.round(e.getX() / 32) == x && Math.round(e.getY() / 32) == y + 1) {
+                    b3 = (Brick) e;
+                }
+                if (Math.round(e.getX() / 32) == x && Math.round(e.getY() / 32) == y - 1) {
+                    b4 = (Brick) e;
+                }
+            }
+        }
+        if (b1 != null) stillObjects.remove(b1);
+        if (b2 != null) stillObjects.remove(b2);
+        if (b3 != null) stillObjects.remove(b3);
+        if (b4 != null) stillObjects.remove(b4);
     }
 }

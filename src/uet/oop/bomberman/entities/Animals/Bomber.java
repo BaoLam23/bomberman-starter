@@ -27,15 +27,25 @@ public class Bomber extends Animal {
     }
 
 
-    public void checkBomb() {
-        for (Entity entity : killObjects) {
-            if (entity instanceof Flame) {
+//    public void checkBomb() {
+//        for (Entity entity : killObjects) {
+//            if (entity instanceof Flame) {
+//                if (entity.getX() == bomberman.getX() && entity.getY() == bomberman.getY()) {
+//                    bomberman.setLife(false);
+//                }
+//            }
+//            if (entity instanceof Bomb) {
+//                if (entity.getX() == bomberman.getX() && entity.getY() == bomberman.getY() && !hasBomb) {
+//                    bomberman.setLife(false);
+//                }
+//            }
+//        }
+//    }
+
+    public void checkEnemy() {
+        for (Entity entity : entities) {
+            if (entity instanceof Balloom || entity instanceof Oneal) {
                 if (entity.getX() == bomberman.getX() && entity.getY() == bomberman.getY()) {
-                    bomberman.setLife(false);
-                }
-            }
-            if (entity instanceof Bomb) {
-                if (entity.getX() == bomberman.getX() && entity.getY() == bomberman.getY() && !hasBomb) {
                     bomberman.setLife(false);
                 }
             }
@@ -43,7 +53,8 @@ public class Bomber extends Animal {
     }
     @Override
     public void update() {
-        checkBomb();
+        checkBomb(bomberman);
+        checkEnemy();
         spriteCounter++;
 
         if (spriteCounter > 10) {

@@ -3,7 +3,6 @@ package uet.oop.bomberman.entities.Animals;
 import javafx.scene.image.Image;
 import uet.oop.bomberman.control.Sound;
 import uet.oop.bomberman.entities.Entity;
-import uet.oop.bomberman.graphics.Sprite;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
@@ -20,8 +19,16 @@ public class Oneal extends Animal {
         super(x, y, img);
     }
 
+    public void bombKillOnel() {
+        //this.setSprite(Sprite.Oneal_dead.getFxImage());
+        entities.remove(this);
+    }
     @Override
     public void update() {
+        checkBomb(this);
+        if (!this.isLife()) {
+            this.bombKillOnel();
+        }
 //        for (Entity e : entities) {
 //            if (e instanceof Balloom) {
 //                ((Balloom) e).moveLeft();

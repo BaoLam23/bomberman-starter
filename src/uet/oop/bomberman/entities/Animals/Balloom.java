@@ -19,6 +19,11 @@ public class Balloom extends Animal {
         super(x, y, img);
     }
 
+    public void bombKillBalloom() {
+        //this.setSprite(Sprite.balloom_dead.getFxImage());
+        entities.remove(this);
+    }
+
     @Override
     public void update() {
 //        for (Entity e : entities) {
@@ -59,6 +64,10 @@ public class Balloom extends Animal {
 
             if (spriteNum == 3)
                 setSprite(Sprite.balloom_left3.getFxImage());
+        }
+        checkBomb(this);
+        if (!this.isLife()) {
+            this.bombKillBalloom();
         }
 
         moveNum++;
