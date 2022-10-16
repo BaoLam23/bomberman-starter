@@ -50,6 +50,8 @@ public class Bomber extends Animal {
                 }
             }
         }
+
+
     }
     @Override
     public void update() {
@@ -68,6 +70,7 @@ public class Bomber extends Animal {
         }
         if (!bomberman.isLife()) {
             bombKillPlayer((Bomber) bomberman);
+
         }
     }
 }

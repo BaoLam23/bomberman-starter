@@ -21,6 +21,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 public class BombermanGame extends Application {
     
@@ -57,11 +59,14 @@ public class BombermanGame extends Application {
         stage.setScene(scene);
         stage.show();
 
+        Sound.startJingle();
+
         // play background music
-        Sound.backgroundMusic();
+        CompletableFuture.delayedExecutor(3, TimeUnit.SECONDS).execute(Sound::backgroundMusic);
 
         bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
-        //entities.add(bomberman);
+        entities.add(bomberman);
+
 
         scene.setOnKeyPressed(
                 new EventHandler<KeyEvent>()

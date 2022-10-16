@@ -40,4 +40,15 @@ public class Sound {
         AudioClip dying = new AudioClip(Sound.class.getResource("/sounds/Effects/Die.wav").toExternalForm());
         dying.play();
     }
+
+    public static void enemyDying() {
+        AudioClip dying = new AudioClip(Sound.class.getResource("/sounds/Effects/Enemy Dies.wav").toExternalForm());
+        dying.play();
+    }
+
+    public static void startJingle() {
+        AudioClip jingle = new AudioClip(Sound.class.getResource("/sounds/Effects/Match Start Jingle.wav").toExternalForm());
+        jingle.play();
+    }
 }
+

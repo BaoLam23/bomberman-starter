@@ -22,6 +22,7 @@ public class Balloom extends Animal {
     public void bombKillBalloom() {
         //this.setSprite(Sprite.balloom_dead.getFxImage());
         entities.remove(this);
+        Sound.enemyDying();
     }
 
     @Override
