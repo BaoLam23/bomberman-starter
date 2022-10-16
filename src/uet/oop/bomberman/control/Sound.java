@@ -29,4 +29,15 @@ public class Sound {
         AudioClip explosion = new AudioClip(Sound.class.getResource("/sounds/Effects/Place Bomb.wav").toExternalForm());
         explosion.play();
     }
+
+    public static void walking() {
+        AudioClip walking = new AudioClip(Sound.class.getResource("/sounds/Effects/Walking 1.wav").toExternalForm());
+        walking.setVolume(0.7);
+        walking.play();
+    }
+
+    public static void dying() {
+        AudioClip dying = new AudioClip(Sound.class.getResource("/sounds/Effects/Die.wav").toExternalForm());
+        dying.play();
+    }
 }

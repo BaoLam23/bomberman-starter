@@ -56,7 +56,7 @@ public class Bomb extends Entity {
 //                stillObjects.add(bomb);
 
                 Sound.bombExploding();
-                hasBomb = false;
+//                hasBomb = false;
                 exploded = true;
 
                 flameLeft = new Flame(x - 1, y, Sprite.explosion_horizontal_left_last.getFxImage());
@@ -71,7 +71,7 @@ public class Bomb extends Entity {
                 if (canExplode(x + 1, y))
                     killObjects.add(flameRight);
 
-                if (canExplode(x + 1, y))
+                if (canExplode(x, y + 1))
                     killObjects.add(flameDown);
 
                 if (canExplode(x, y - 1))
@@ -79,21 +79,28 @@ public class Bomb extends Entity {
             });
 
             CompletableFuture.delayedExecutor(4, TimeUnit.SECONDS).execute(() -> {
-//                hasBomb = false;
+                hasBomb = false;
                 killObjects.remove(bomb);
 
-//                if (canExplode(x - 1, y))
-//                    stillObjects.remove(flameLeft);
-//
-//                if (canExplode(x + 1, y))
-//                    stillObjects.remove(flameRight);
-//
-//                if (canExplode(x, y + 1))
-//                    stillObjects.remove(flameDown);
-//
-//                if (canExplode(x, y - 1))
-//                    stillObjects.remove(flameTop);
-                killObjects.clear();
+                if (canExplode(x - 1, y)) {
+                    killObjects.remove(flameLeft);
+
+                }
+
+                if (canExplode(x + 1, y)) {
+                    killObjects.remove(flameRight);
+
+                }
+
+                if (canExplode(x, y + 1)) {
+                    killObjects.remove(flameDown);
+
+                }
+
+                if (canExplode(x, y - 1)) {
+                    killObjects.remove(flameTop);
+
+                }
             });
         }
     }
@@ -156,10 +163,7 @@ public class Bomb extends Entity {
 
     public static Entity getAt(int x, int y) {
         for (Entity e : stillObjects) {
-//            if (x == e.getX() && y == e.getY()) {
-//                return e;
-//            }
-            if (x == Math.ceil(e.getX() / 32) && y == Math.ceil(e.getY() / 32)) {
+            if (x == e.getX() / 32 && y == e.getY() / 32) {
                 return e;
             }
         }

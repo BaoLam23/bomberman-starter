@@ -79,6 +79,8 @@ public class BombermanGame extends Application {
 
                                 if(bomberman.getSpriteNum() == 3)
                                     bomberman.setSprite(Sprite.player_up_2.getFxImage());
+
+                                Sound.walking();
                                 break;
                             }
                             case DOWN: {
@@ -91,6 +93,8 @@ public class BombermanGame extends Application {
 
                                 if(bomberman.getSpriteNum() == 3)
                                     bomberman.setSprite(Sprite.player_down_2.getFxImage());
+
+                                Sound.walking();
                                 break;
                             }
                             case LEFT: {
@@ -103,6 +107,8 @@ public class BombermanGame extends Application {
 
                                 if(bomberman.getSpriteNum() == 3)
                                     bomberman.setSprite(Sprite.player_left_2.getFxImage());
+
+                                Sound.walking();
                                 break;
                             }
                             case RIGHT: {
@@ -115,6 +121,8 @@ public class BombermanGame extends Application {
 
                                 if(bomberman.getSpriteNum() == 3)
                                     bomberman.setSprite(Sprite.player_right_2.getFxImage());
+
+                                Sound.walking();
                                 break;
                             }
                             case SPACE: {

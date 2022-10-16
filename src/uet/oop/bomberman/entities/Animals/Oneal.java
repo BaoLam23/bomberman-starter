@@ -3,6 +3,7 @@ package uet.oop.bomberman.entities.Animals;
 import javafx.scene.image.Image;
 import uet.oop.bomberman.control.Sound;
 import uet.oop.bomberman.entities.Entity;
+import uet.oop.bomberman.graphics.Sprite;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
@@ -12,6 +13,8 @@ import static uet.oop.bomberman.BombermanGame.stillObjects;
 
 public class Oneal extends Animal {
     private int moveNum = 1;
+
+    private boolean isFacingLeft = false;
 
     public Oneal(int x, int y, Image img) {
         super(x, y, img);
@@ -26,6 +29,40 @@ public class Oneal extends Animal {
 //            }
 //        }
 
+        spriteCounter++;
+
+        if (spriteCounter > 10) {
+            if (spriteNum == 1 || spriteNum == 2)
+                spriteNum++;
+
+            else if (spriteNum == 3)
+                spriteNum = 1;
+
+            spriteCounter = 0;
+        }
+
+        if (!isFacingLeft) {
+            if (spriteNum == 1)
+                setSprite(Sprite.oneal_right1.getFxImage());
+
+            if (spriteNum == 2)
+                setSprite(Sprite.oneal_right2.getFxImage());
+
+            if (spriteNum == 3)
+                setSprite(Sprite.oneal_right3.getFxImage());
+        }
+
+        else {
+            if (spriteNum == 1)
+                setSprite(Sprite.oneal_left1.getFxImage());
+
+            if (spriteNum == 2)
+                setSprite(Sprite.oneal_left2.getFxImage());
+
+            if (spriteNum == 3)
+                setSprite(Sprite.oneal_left3.getFxImage());
+        }
+
         moveNum++;
 
         int dir = (int) (Math.random() * 4 + 1);
@@ -33,10 +70,12 @@ public class Oneal extends Animal {
             switch (dir) {
                 case 1: {
                     this.moveLeft();
+                    isFacingLeft = true;
                     break;
                 }
                 case 2: {
                     this.moveRight();
+                    isFacingLeft = false;
                     break;
                 }
                 case 3: {
@@ -55,7 +94,7 @@ public class Oneal extends Animal {
 
     @Override
     public void setSprite(Image newSprite) {
-
+        img = newSprite;
     }
 
 }
