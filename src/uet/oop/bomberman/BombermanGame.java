@@ -7,8 +7,11 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import uet.oop.bomberman.control.Menu;
 import uet.oop.bomberman.control.Sound;
 import uet.oop.bomberman.entities.*;
 import uet.oop.bomberman.entities.Animals.Animal;
@@ -24,6 +27,8 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
+import static uet.oop.bomberman.control.Menu.updateMenu;
+
 public class BombermanGame extends Application {
     
     public static final int WIDTH = 31;
@@ -37,6 +42,11 @@ public class BombermanGame extends Application {
     public static Animal bomberman;
 
 
+    public static boolean running;
+    public static ImageView authorView;
+    public static int _level = 1;
+    public static Stage mainStage = null;
+
     public static void main(String[] args) {
         Application.launch(BombermanGame.class);
     }
@@ -45,27 +55,30 @@ public class BombermanGame extends Application {
     public void start(Stage stage) {
         // Tao Canvas
         canvas = new Canvas(Sprite.SCALED_SIZE * WIDTH, Sprite.SCALED_SIZE * HEIGHT);
+        // s
+        canvas.setTranslateY(32);
+        // e
         gc = canvas.getGraphicsContext2D();
-
-
+        // s
+        //Image author = new Image("demo.png");
+//        authorView = new ImageView(author);
+//        authorView.setX(-400);
+//        authorView.setY(-208);
+//        authorView.setScaleX(0.5);
+//        authorView.setScaleY(0.5);
+        // e
         // Tao root container
         Group root = new Group();
+        // s
+        Menu.createMenu(root);
+        // e
         root.getChildren().add(canvas);
+        // s
+        //root.getChildren().add(authorView);
+        // e
 
         // Tao scene
         Scene scene = new Scene(root);
-
-        // Them scene vao stage
-        stage.setScene(scene);
-        stage.show();
-
-        Sound.startJingle();
-
-        // play background music
-        CompletableFuture.delayedExecutor(3, TimeUnit.SECONDS).execute(Sound::backgroundMusic);
-
-        bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
-        entities.add(bomberman);
 
 
         scene.setOnKeyPressed(
@@ -138,25 +151,42 @@ public class BombermanGame extends Application {
                         }
                     }
                 });
+        // Them scene vao stage
+        stage.setScene(scene);
+        // s
+        mainStage = stage;
+        mainStage.show();
+        // e
+        //stage.show();
 
+        Sound.startJingle();
+
+        // play background music
+        CompletableFuture.delayedExecutor(3, TimeUnit.SECONDS).execute(Sound::backgroundMusic);
+
+        bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
+        entities.add(bomberman);
 
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                render();
-                update();
+                if (running) {
+                    render();
+                    update();
+                    updateMenu();
+                }
 
             }
         };
 
         timer.start();
 
-        createMap();
+        //createMap();
 
 
     }
 
-    public void createMap() {
+    public static void createMap() {
         try {
             FileReader reader = new FileReader("res/levels/Level1.txt");
             BufferedReader buffRead = new BufferedReader(reader);

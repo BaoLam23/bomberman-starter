@@ -48,6 +48,7 @@ public class Sound {
 
     public static void startJingle() {
         AudioClip jingle = new AudioClip(Sound.class.getResource("/sounds/Effects/Match Start Jingle.wav").toExternalForm());
+        jingle.setVolume(0.5);
         jingle.play();
     }
 }
