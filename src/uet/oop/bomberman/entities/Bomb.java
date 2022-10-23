@@ -18,7 +18,7 @@ public class Bomb extends Entity {
     private static Entity flameTop;
 
     public static boolean hasBomb = false;
-    private static boolean exploded = false;
+    public static boolean exploded = false;
 
     public Bomb(int x, int y, Image img) {
         super(x, y, img);
@@ -50,13 +50,8 @@ public class Bomb extends Entity {
 
 
             CompletableFuture.delayedExecutor(2, TimeUnit.SECONDS).execute(() -> {
-                // Your code here executes after 3 seconds!
-//                stillObjects.remove(bomb);
-//                bomb = new Bomb(x, y, Sprite.bomb_exploded2.getFxImage());
-//                stillObjects.add(bomb);
-
                 Sound.bombExploding();
-//                hasBomb = false;
+                //hasBomb = false;
                 exploded = true;
 
                 flameLeft = new Flame(x - 1, y, Sprite.explosion_horizontal_left_last.getFxImage());
@@ -88,27 +83,7 @@ public class Bomb extends Entity {
 
             CompletableFuture.delayedExecutor(4, TimeUnit.SECONDS).execute(() -> {
                 hasBomb = false;
-                killObjects.remove(bomb);
-
-                if (canExplode(x - 1, y)) {
-                    killObjects.remove(flameLeft);
-
-                }
-
-                if (canExplode(x + 1, y)) {
-                    killObjects.remove(flameRight);
-
-                }
-
-                if (canExplode(x, y + 1)) {
-                    killObjects.remove(flameDown);
-
-                }
-
-                if (canExplode(x, y - 1)) {
-                    killObjects.remove(flameTop);
-
-                }
+                killObjects.clear();
             });
         }
     }
@@ -129,18 +104,18 @@ public class Bomb extends Entity {
 
         if (!exploded) {
             if (getSpriteNum() == 1)
-                setSprite(Sprite.bomb.getFxImage());
+                bomb.setSprite(Sprite.bomb.getFxImage());
 
             if (getSpriteNum() == 2)
-                setSprite(Sprite.bomb_1.getFxImage());
+                bomb.setSprite(Sprite.bomb_1.getFxImage());
 
             if (getSpriteNum() == 3)
-                setSprite(Sprite.bomb_2.getFxImage());
+                bomb.setSprite(Sprite.bomb_2.getFxImage());
         }
 
         else {
             if (getSpriteNum() == 1) {
-                setSprite(Sprite.bomb_exploded.getFxImage());
+                bomb.setSprite(Sprite.bomb_exploded.getFxImage());
 
                 flameLeft.setSprite(Sprite.explosion_horizontal_left_last.getFxImage());
                 flameRight.setSprite(Sprite.explosion_horizontal_right_last.getFxImage());
@@ -171,7 +146,7 @@ public class Bomb extends Entity {
 
     public static Entity getAt(int x, int y) {
         for (Entity e : stillObjects) {
-            if (x == e.getX() / 32 && y == e.getY() / 32) {
+            if (x == Math.round(e.getX() / 32) && y == Math.round(e.getY() / 32)) {
                 return e;
             }
         }

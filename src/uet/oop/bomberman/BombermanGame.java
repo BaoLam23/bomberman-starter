@@ -27,7 +27,10 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
+import static uet.oop.bomberman.Level.LevelUp.levelUp;
+import static uet.oop.bomberman.Level.LevelUp.win;
 import static uet.oop.bomberman.control.Menu.updateMenu;
+import static uet.oop.bomberman.entities.Portal.isPortal;
 
 public class BombermanGame extends Application {
     
@@ -39,6 +42,7 @@ public class BombermanGame extends Application {
     public static List<Entity> entities = new ArrayList<>();
     public static List<Entity> stillObjects = new ArrayList<>();
     public static List<Entity> killObjects = new ArrayList<>();
+    public static Entity portal = null;
     public static Animal bomberman;
 
 
@@ -164,8 +168,7 @@ public class BombermanGame extends Application {
         // play background music
         CompletableFuture.delayedExecutor(3, TimeUnit.SECONDS).execute(Sound::backgroundMusic);
 
-        bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
-        entities.add(bomberman);
+
 
         AnimationTimer timer = new AnimationTimer() {
             @Override
@@ -178,7 +181,9 @@ public class BombermanGame extends Application {
 
             }
         };
-
+        bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
+        //entities.add(bomberman);
+        bomberman.setLife(false);
         timer.start();
 
         //createMap();
@@ -186,87 +191,24 @@ public class BombermanGame extends Application {
 
     }
 
-    public static void createMap() {
-        try {
-            FileReader reader = new FileReader("res/levels/Level1.txt");
-            BufferedReader buffRead = new BufferedReader(reader);
-            String firstLine = buffRead.readLine();
-            System.out.println(firstLine);
-            int L = 0, R = 0, C = 0;
-
-            String[] tokens = firstLine.split(" ");
-            L = Integer.parseInt(tokens[0]);
-            R = Integer.parseInt(tokens[1]);
-            C = Integer.parseInt(tokens[2]);
-
-            char[][] matrix = null;
-
-            matrix = new char[R][C];
-
-            for (int i = 0; i < R; i++) {
-                String line = buffRead.readLine();
-                for (int j = 0; j < C; j++) {
-                    char character = line.charAt(j);
-                    matrix[i][j] = character;
-                }
-
-
-            }
-
-            for (int i = 0; i < R; i++) {
-                for (int j = 0; j < C; j++) {
-                    Entity object = null;
-                    switch (matrix[i][j]) {
-                        case '#': {
-                            object = new Wall(j, i, Sprite.wall.getFxImage());
-                            stillObjects.add(object);
-                            break;
-                        }
-                        case '*': {
-                            object = new Grass(j, i, Sprite.grass.getFxImage());
-                            stillObjects.add(object);
-                            object = new Brick(j, i, Sprite.brick.getFxImage());
-                            stillObjects.add(object);
-                            break;
-                        }
-                        case 'x': {
-                            object = new Grass(j, i, Sprite.grass.getFxImage());
-                            stillObjects.add(object);
-                            object = new Portal(j, i, Sprite.portal.getFxImage());
-                            stillObjects.add(object);
-                            break;
-                        }
-                        case '1': {
-                            object = new Grass(j, i, Sprite.grass.getFxImage());
-                            stillObjects.add(object);
-                            object = new Balloom(j, i, Sprite.balloom_left1.getFxImage());
-                            entities.add(object);
-                            break;
-                        }
-                        case '2': {
-                            object = new Grass(j, i, Sprite.grass.getFxImage());
-                            stillObjects.add(object);
-                            object = new Oneal(j, i, Sprite.oneal_left1.getFxImage());
-                            entities.add(object);
-                            break;
-                        }
-                        default: {
-                            object = new Grass(j, i, Sprite.grass.getFxImage());
-                            stillObjects.add(object);
-                        }
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-}
-
     public void update() {
         entities.forEach(Entity::update);
         stillObjects.forEach(Entity::update);
         killObjects.forEach(Entity::update);
         bomberman.update();
+
+        if (entities.size() == 0 && !isPortal && !win) {
+            portal = new Portal(3, 4, Sprite.portal.getFxImage());
+            entities.add(portal);
+        }
+        if (portal != null) {
+            if (bomberman.getX() == portal.getX() && bomberman.getY() == portal.getY()) {
+                win = true;
+            }
+        }
+
+        levelUp();
+        //updateSound();
     }
 
     public void render() {

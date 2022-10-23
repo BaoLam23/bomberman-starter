@@ -8,6 +8,7 @@ import uet.oop.bomberman.entities.Flame;
 
 import static uet.oop.bomberman.BombermanGame.bomberman;
 import static uet.oop.bomberman.BombermanGame.killObjects;
+import static uet.oop.bomberman.entities.Bomb.exploded;
 import static uet.oop.bomberman.entities.Bomb.hasBomb;
 import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
 
@@ -70,9 +71,8 @@ public abstract class Animal extends Entity {
                 if (entity.getX() == animal.getX() && entity.getY() == animal.getY()) {
                     animal.setLife(false);
                 }
-            }
-            if (entity instanceof Bomb) {
-                if (entity.getX() == animal.getX() && entity.getY() == animal.getY() && !hasBomb) {
+            } else if (entity instanceof Bomb) {
+                if (entity.getX() == animal.getX() && entity.getY() == animal.getY() && exploded) {
                     animal.setLife(false);
                 }
             }
