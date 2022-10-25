@@ -20,8 +20,8 @@ public class LevelUp {
 //                case 2:
 //                    new Level3();
 //                    break;
-                case 3:
-                    new Level1();
+//                case 3:
+//                    new Level1();
             }
             win = false;
         }

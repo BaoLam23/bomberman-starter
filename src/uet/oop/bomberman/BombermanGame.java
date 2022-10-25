@@ -36,7 +36,8 @@ public class BombermanGame extends Application {
     
     public static final int WIDTH = 31;
     public static final int HEIGHT = 13;
-    
+
+    public static Group root;
     private GraphicsContext gc;
     private Canvas canvas;
     public static List<Entity> entities = new ArrayList<>();
@@ -64,15 +65,15 @@ public class BombermanGame extends Application {
         // e
         gc = canvas.getGraphicsContext2D();
         // s
-        //Image author = new Image("demo.png");
-//        authorView = new ImageView(author);
-//        authorView.setX(-400);
-//        authorView.setY(-208);
+        //Image author = new Image("mainMenu.png");
+        //authorView = new ImageView(author);
+        //authorView.setX(-32);
+        //authorView.setY(32);
 //        authorView.setScaleX(0.5);
 //        authorView.setScaleY(0.5);
         // e
         // Tao root container
-        Group root = new Group();
+        root = new Group();
         // s
         Menu.createMenu(root);
         // e
@@ -92,7 +93,7 @@ public class BombermanGame extends Application {
                     {
                         switch (e.getCode()) {
                             case UP: {
-                                ((Bomber) bomberman).moveUp();
+                                bomberman.moveUp();
                                 if(bomberman.getSpriteNum() == 1)
                                     bomberman.setSprite(Sprite.player_up.getFxImage());
 
@@ -106,7 +107,7 @@ public class BombermanGame extends Application {
                                 break;
                             }
                             case DOWN: {
-                                ((Bomber) bomberman).moveDown();
+                                bomberman.moveDown();
                                 if(bomberman.getSpriteNum() == 1)
                                     bomberman.setSprite(Sprite.player_down.getFxImage());
 
@@ -120,7 +121,7 @@ public class BombermanGame extends Application {
                                 break;
                             }
                             case LEFT: {
-                                ((Bomber) bomberman).moveLeft();
+                                bomberman.moveLeft();
                                 if(bomberman.getSpriteNum() == 1)
                                     bomberman.setSprite(Sprite.player_left.getFxImage());
 
@@ -134,7 +135,7 @@ public class BombermanGame extends Application {
                                 break;
                             }
                             case RIGHT: {
-                                ((Bomber) bomberman).moveRight();
+                                bomberman.moveRight();
                                 if(bomberman.getSpriteNum() == 1)
                                     bomberman.setSprite(Sprite.player_right.getFxImage());
 

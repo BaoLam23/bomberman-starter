@@ -11,8 +11,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import uet.oop.bomberman.BombermanGame;
 import uet.oop.bomberman.Level.Level1;
 import uet.oop.bomberman.graphics.Sprite;
+import static uet.oop.bomberman.BombermanGame.root;
 
 import static uet.oop.bomberman.BombermanGame.*;
 
@@ -67,6 +69,7 @@ public class Menu {
             if (bomberman.isLife()) {
                 running = !running;
             } else {
+                BombermanGame.root.getChildren().remove(authorView);
                 new Level1();
                 running = true;
             }
