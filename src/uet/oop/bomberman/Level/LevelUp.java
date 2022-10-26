@@ -17,11 +17,13 @@ public class LevelUp {
                     isPortal = false;
                     new Level2();
                     break;
-//                case 2:
-//                    new Level3();
-//                    break;
-//                case 3:
-//                    new Level1();
+                case 2:
+                    isPortal = false;
+                    new Level3();
+                    break;
+                case 3:
+                    isPortal = false;
+                    new Level1();
             }
             win = false;
         }

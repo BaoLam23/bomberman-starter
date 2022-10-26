@@ -43,9 +43,7 @@ public class Bomber extends Animal {
     public void update() {
         checkBomb(bomberman);
         checkEnemy();
-//        if (!bomberman.isLife()) {
-//            bomberman.setLife(false);
-//        }
+
         spriteCounter++;
 
         if (spriteCounter > 10) {
