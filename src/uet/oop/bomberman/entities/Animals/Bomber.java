@@ -26,6 +26,8 @@ public class Bomber extends Animal {
         img = newSprite;
     }
 
+
+
     public void checkEnemy() {
         for (Entity entity : entities) {
             if (entity instanceof Balloom || entity instanceof Oneal) {

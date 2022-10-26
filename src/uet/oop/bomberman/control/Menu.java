@@ -14,6 +14,9 @@ import javafx.scene.text.Text;
 import uet.oop.bomberman.BombermanGame;
 import uet.oop.bomberman.Level.Level1;
 import uet.oop.bomberman.graphics.Sprite;
+
+import java.io.File;
+
 import static uet.oop.bomberman.BombermanGame.root;
 
 import static uet.oop.bomberman.BombermanGame.*;
@@ -41,8 +44,8 @@ public class Menu {
         time.setX(608);
         time.setY(20);
 
-        Image newGame = new Image("newGame.png");
-        //Image newGame = new Image("/textures/newGame.png");
+        //Image newGame = new Image("newGame.png");
+        Image newGame = new Image(new File("res/textures/newGame.png").toURI().toString());
         statusGame = new ImageView(newGame);
         statusGame.setX(-75);
         statusGame.setY(-10);
@@ -100,14 +103,14 @@ public class Menu {
 
         if (bomberman.isLife())
             if (running) {
-                Image pauseGame = new Image("pauseGame.png");
+                Image pauseGame = new Image(new File("res/textures/pauseGame.png").toURI().toString());
                 statusGame.setImage(pauseGame);
             } else {
-                Image playGame = new Image("playGame.png");
+                Image playGame = new Image(new File("res/textures/playGame.png").toURI().toString());
                 statusGame.setImage(playGame);
             }
         else {
-            Image newGame = new Image("newGame.png");
+            Image newGame = new Image(new File("res/textures/newGame.png").toURI().toString());
             statusGame.setImage(newGame);
         }
 //        if (bomberman.isLife())
