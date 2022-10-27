@@ -1,20 +1,24 @@
 package uet.oop.bomberman.entities.Animals;
 
 import javafx.scene.image.Image;
+import javafx.util.Pair;
+import uet.oop.bomberman.AI.AStar;
+import uet.oop.bomberman.AI.Node;
 import uet.oop.bomberman.control.Sound;
+import uet.oop.bomberman.entities.Brick;
 import uet.oop.bomberman.entities.Entity;
+import uet.oop.bomberman.entities.Wall;
 import uet.oop.bomberman.graphics.Sprite;
 
+import java.util.List;
+import java.util.Vector;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
-import static uet.oop.bomberman.BombermanGame.entities;
-import static uet.oop.bomberman.BombermanGame.stillObjects;
+import static uet.oop.bomberman.BombermanGame.*;
 
 public class Oneal extends Animal {
     private int moveNum = 1;
-
-    private boolean isFacingLeft = false;
 
     public Oneal(int x, int y, Image img) {
         super(x, y, img);
@@ -25,18 +29,48 @@ public class Oneal extends Animal {
         Sound.enemyDying();
         entities.remove(this);
     }
+
+    public void findBomberman() {
+        if (!bomberman.isLife()) return;
+        Node bombermanPos = new Node(bomberman.getY() / 32, bomberman.getX() / 32);
+        Node onealPos = new Node(this.getY() / 32, this.getX() / 32);
+
+        AStar aStar = new AStar(HEIGHT, WIDTH, onealPos, bombermanPos);
+
+        int[][] blocksArray = new int[WIDTH * HEIGHT][2];
+        int countBlock = 0;
+
+        for (Entity entity : stillObjects) {
+            if (entity instanceof Wall || entity instanceof Brick) {
+                blocksArray[countBlock][0] = entity.getX() / 32;
+                blocksArray[countBlock][1] = entity.getY() / 32;
+                countBlock++;
+            }
+        }
+
+        aStar.setBlocks(blocksArray, countBlock);
+
+        List<Node> path = aStar.findPath();
+        if (path.size() != 0) {
+            int nextY = path.get(1).getRow();
+            int nextX = path.get(1).getCol();
+
+            if (this.getY() / 32 > nextY)
+                this.moveUp();
+            if (this.getY() / 32 < nextY)
+                this.moveDown();
+            if (this.getX() / 32 > nextX)
+                this.moveLeft();
+            if (this.getX() / 32 < nextX)
+                this.moveRight();
+        }
+    }
     @Override
     public void update() {
         checkBomb(this);
         if (!this.isLife()) {
             this.bombKillOnel();
         }
-//        for (Entity e : entities) {
-//            if (e instanceof Balloom) {
-//                ((Balloom) e).moveLeft();
-//                System.out.println("found");
-//            }
-//        }
 
         spriteCounter++;
 
@@ -50,6 +84,7 @@ public class Oneal extends Animal {
             spriteCounter = 0;
         }
 
+        boolean isFacingLeft = false;
         if (!isFacingLeft) {
             if (spriteNum == 1)
                 setSprite(Sprite.oneal_right1.getFxImage());
@@ -74,29 +109,8 @@ public class Oneal extends Animal {
 
         moveNum++;
 
-        int dir = (int) (Math.random() * 4 + 1);
         if(moveNum > 40) {
-            switch (dir) {
-                case 1: {
-                    this.moveLeft();
-                    isFacingLeft = true;
-                    break;
-                }
-                case 2: {
-                    this.moveRight();
-                    isFacingLeft = false;
-                    break;
-                }
-                case 3: {
-                    this.moveUp();
-                    break;
-                }
-                case 4: {
-                    this.moveDown();
-                    break;
-                }
-            }
-
+            this.findBomberman();
             moveNum = 1;
         }
     }
