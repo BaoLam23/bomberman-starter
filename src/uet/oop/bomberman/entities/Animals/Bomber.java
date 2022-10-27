@@ -8,6 +8,8 @@ import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.Flame;
 import uet.oop.bomberman.graphics.Sprite;
 
+import java.io.File;
+
 import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.entities.Bomb.hasBomb;
 import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
@@ -57,7 +59,11 @@ public class Bomber extends Animal {
         }
         if (!bomberman.isLife()) {
             bombKillPlayer((Bomber) bomberman);
-
+            Image gameOver = new Image(new File("res/textures/gameOver.png").toURI().toString());
+            authorView.setImage(gameOver);
+            if (!root.getChildren().contains(authorView)) {
+                root.getChildren().add(authorView);
+            }
         }
     }
 }

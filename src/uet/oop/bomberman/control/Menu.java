@@ -16,6 +16,8 @@ import uet.oop.bomberman.Level.Level1;
 import uet.oop.bomberman.graphics.Sprite;
 
 import java.io.File;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 import static uet.oop.bomberman.BombermanGame.root;
 
@@ -84,11 +86,15 @@ public class Menu {
             } else {
                 Image playGame = new Image(new File("res/textures/play.png").toURI().toString());
                 statusGame.setImage(playGame);
-
             }
         else {
             Image newGame = new Image(new File("res/textures/start.png").toURI().toString());
             statusGame.setImage(newGame);
+//            Image gameOver = new Image(new File("res/textures/gameOver.png").toURI().toString());
+//            authorView.setImage(gameOver);
+//            if (!root.getChildren().contains(authorView)) {
+//                root.getChildren().add(authorView);
+//            }
         }
 
     }
