@@ -17,9 +17,9 @@ public class LevelUp {
                     isPortal = false;
                     new Level2();
                     break;
-//                case 2:
-//                    new Level3();
-//                    break;
+                case 2:
+                    new Level3();
+                    break;
 //                case 3:
 //                    new Level1();
             }
