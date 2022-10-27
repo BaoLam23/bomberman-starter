@@ -13,6 +13,6 @@ public class Level1 {
         entities.clear();
         stillObjects.clear();
         killObjects.clear();
-        new CreateMap("res/levels/Level0.txt");
+        new CreateMap("res/levels/Level1.txt");
     }
 }

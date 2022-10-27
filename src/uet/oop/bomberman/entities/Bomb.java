@@ -40,6 +40,7 @@ public class Bomb extends Entity {
 
             //bomb = new Bomb(x, y, Sprite.bomb_exploded2.getFxImage());
             killObjects.add(bomb);
+            stillObjects.add(bomb);
 
             Sound.bombPlaced();
             CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS).execute(() -> {
@@ -84,6 +85,7 @@ public class Bomb extends Entity {
             CompletableFuture.delayedExecutor(4, TimeUnit.SECONDS).execute(() -> {
                 hasBomb = false;
                 killObjects.clear();
+                stillObjects.remove(bomb);
             });
         }
     }
@@ -92,7 +94,7 @@ public class Bomb extends Entity {
     public void update() {
         spriteCounter++;
 
-        if (spriteCounter > 10) {
+        if (spriteCounter > 20) {
             if (spriteNum == 1 || spriteNum == 2)
                 spriteNum++;
 
@@ -178,9 +180,46 @@ public class Bomb extends Entity {
                 }
             }
         }
-        if (b1 != null) stillObjects.remove(b1);
-        if (b2 != null) stillObjects.remove(b2);
-        if (b3 != null) stillObjects.remove(b3);
-        if (b4 != null) stillObjects.remove(b4);
+        if (b1 != null) {
+            b1.isBroken = true;
+            b1.setSpriteNum(1);
+        }
+
+        if (b2 != null) {
+            b2.isBroken = true;
+            b2.setSpriteNum(1);
+        }
+
+        if (b3 != null) {
+            b3.isBroken = true;
+            b3.setSpriteNum(1);
+        }
+
+        if (b4 != null){
+            b4.isBroken = true;
+            b4.setSpriteNum(1);
+        }
+
+        Brick finalB = b1;
+        Brick finalB1 = b2;
+        Brick finalB2 = b3;
+        Brick finalB3 = b4;
+        CompletableFuture.delayedExecutor(2, TimeUnit.SECONDS).execute(() -> {
+            if (finalB != null) {
+                stillObjects.remove(finalB);
+            }
+
+            if (finalB1 != null) {
+                stillObjects.remove(finalB1);
+            }
+
+            if (finalB2 != null) {
+                stillObjects.remove(finalB2);
+            }
+
+            if (finalB3 != null){
+                stillObjects.remove(finalB3);
+            }
+        });
     }
 }

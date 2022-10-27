@@ -58,6 +58,10 @@ public abstract class Entity {
         return spriteNum;
     }
 
+    public void setSpriteNum(int num) {
+        spriteNum = num;
+    }
+
     public int getSpriteCounter() {
         return spriteCounter;
     }
