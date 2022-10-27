@@ -18,10 +18,12 @@ public class LevelUp {
                     new Level2();
                     break;
                 case 2:
+                    isPortal = false;
                     new Level3();
                     break;
-//                case 3:
-//                    new Level1();
+                case 3:
+                    isPortal = false;
+                    new Level1();
             }
             win = false;
         }

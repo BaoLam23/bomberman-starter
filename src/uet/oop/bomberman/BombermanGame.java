@@ -65,10 +65,10 @@ public class BombermanGame extends Application {
         // e
         gc = canvas.getGraphicsContext2D();
         // s
-        //Image author = new Image("mainMenu.png");
-        //authorView = new ImageView(author);
-        //authorView.setX(-32);
-        //authorView.setY(32);
+        Image author = new Image("mainMenu.png");
+        authorView = new ImageView(author);
+        authorView.setY(32);
+        //authorView.setX(32);
 //        authorView.setScaleX(0.5);
 //        authorView.setScaleY(0.5);
         // e
@@ -79,7 +79,7 @@ public class BombermanGame extends Application {
         // e
         root.getChildren().add(canvas);
         // s
-        //root.getChildren().add(authorView);
+        root.getChildren().add(authorView);
         // e
 
         // Tao scene
@@ -183,7 +183,6 @@ public class BombermanGame extends Application {
             }
         };
         bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
-        //entities.add(bomberman);
         bomberman.setLife(false);
         timer.start();
 

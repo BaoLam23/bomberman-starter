@@ -22,7 +22,6 @@ import static uet.oop.bomberman.BombermanGame.root;
 import static uet.oop.bomberman.BombermanGame.*;
 
 public class Menu {
-    public static Button button = new Button();
     private static ImageView statusGame;
     public static Text level, bomb, time;
     public static int bombNumber = 20, timeNumber = 120;
@@ -31,60 +30,36 @@ public class Menu {
         level = new Text("Level: 1");
         level.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         level.setFill(Color.WHITE);
-        level.setX(416);
+        level.setX(20);
         level.setY(20);
         bomb = new Text("Bombs: 20");
         bomb.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         bomb.setFill(Color.WHITE);
-        bomb.setX(512);
+        bomb.setX(100);
         bomb.setY(20);
         time = new Text("Times: 120");
         time.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         time.setFill(Color.WHITE);
-        time.setX(608);
+        time.setX(100);
         time.setY(20);
 
         //Image newGame = new Image("newGame.png");
-        Image newGame = new Image(new File("res/textures/newGame.png").toURI().toString());
+        Image newGame = new Image(new File("res/textures/start.png").toURI().toString());
         statusGame = new ImageView(newGame);
-        statusGame.setX(-75);
-        statusGame.setY(-10);
+        statusGame.setX(850);
+        statusGame.setY(-14);
         statusGame.setScaleX(0.5);
         statusGame.setScaleY(0.5);
 
-
-//        //Setting text to the button
-//        button.setText("New game");
-//        //Setting the location of the button
-//        button.setTranslateX(150);
-//        button.setTranslateY(10);
-
-
         Pane pane = new Pane();
-        pane.getChildren().addAll(level, bomb, time, statusGame);
+        pane.getChildren().addAll(level, time, statusGame);
         pane.setMinSize(Sprite.SCALED_SIZE * WIDTH, 20);
         //pane.setMaxSize(800, 480);
         pane.setStyle("-fx-background-color: #353535");
 
         root.getChildren().add(pane);
 
-        button.setOnMouseClicked(actionEvent -> {
-            if (bomberman.isLife()) {
-                running = !running;
-            } else {
-                BombermanGame.root.getChildren().remove(authorView);
-                new Level1();
-                running = true;
-            }
-            //button.setFocusTraversable(true);
-            updateMenu();
-//            pane.removeEventFilter(MouseEvent.MOUSE_CLICKED,
-//                    new EventHandler<MouseEvent>() {
-//                        public void handle(MouseEvent e) {
-//                            System.out.println("mouse clicked");
-//                        };
-//                    });
-        });
+
         statusGame.setOnMouseClicked(event -> {
             if (bomberman.isLife()) {
                 running = !running;
@@ -103,24 +78,18 @@ public class Menu {
 
         if (bomberman.isLife())
             if (running) {
-                Image pauseGame = new Image(new File("res/textures/pauseGame.png").toURI().toString());
+                Image pauseGame = new Image(new File("res/textures/pause.png").toURI().toString());
                 statusGame.setImage(pauseGame);
+                root.getChildren().remove(authorView);
             } else {
-                Image playGame = new Image(new File("res/textures/playGame.png").toURI().toString());
+                Image playGame = new Image(new File("res/textures/play.png").toURI().toString());
                 statusGame.setImage(playGame);
+
             }
         else {
-            Image newGame = new Image(new File("res/textures/newGame.png").toURI().toString());
+            Image newGame = new Image(new File("res/textures/start.png").toURI().toString());
             statusGame.setImage(newGame);
         }
-//        if (bomberman.isLife())
-//            if (running) {
-//                button.setText("Pause");
-//            } else {
-//                button.setText("Play");
-//            }
-//        else {
-//            button.setText("New");
-//        }
+
     }
 }
