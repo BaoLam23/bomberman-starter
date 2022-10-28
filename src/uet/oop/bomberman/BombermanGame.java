@@ -43,6 +43,7 @@ public class BombermanGame extends Application {
     public static List<Entity> entities = new ArrayList<>();
     public static List<Entity> stillObjects = new ArrayList<>();
     public static List<Entity> killObjects = new ArrayList<>();
+    public static List<Entity> itemsList = new ArrayList<>();
     public static Entity portal = null;
     public static Animal bomberman;
 
@@ -192,6 +193,7 @@ public class BombermanGame extends Application {
     }
 
     public void update() {
+        itemsList.forEach(Entity::update);
         entities.forEach(Entity::update);
         stillObjects.forEach(Entity::update);
         killObjects.forEach(Entity::update);
@@ -213,6 +215,7 @@ public class BombermanGame extends Application {
 
     public void render() {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        itemsList.forEach(g -> g.render(gc));
         stillObjects.forEach(g -> g.render(gc));
         killObjects.forEach(g -> g.render(gc));
         entities.forEach(g -> g.render(gc));

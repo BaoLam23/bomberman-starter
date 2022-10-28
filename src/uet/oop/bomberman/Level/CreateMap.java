@@ -3,6 +3,9 @@ package uet.oop.bomberman.Level;
 import uet.oop.bomberman.entities.*;
 import uet.oop.bomberman.entities.Animals.Balloom;
 import uet.oop.bomberman.entities.Animals.Oneal;
+import uet.oop.bomberman.entities.Items.Bombpass;
+import uet.oop.bomberman.entities.Items.Random;
+import uet.oop.bomberman.entities.Items.Wallpass;
 import uet.oop.bomberman.graphics.Sprite;
 
 import java.io.BufferedReader;
@@ -76,6 +79,28 @@ public class CreateMap {
                             stillObjects.add(object);
                             object = new Oneal(j, i, Sprite.oneal_left1.getFxImage());
                             entities.add(object);
+                            break;
+                        }
+
+                        case 'b': {
+                            object = new Bombpass(j, i, Sprite.powerup_bombpass.getFxImage());
+                            itemsList.add(object);
+                            object = new Brick(j, i, Sprite.brick.getFxImage());
+                            stillObjects.add(object);
+                            break;
+                        }
+                        case 'w': {
+                            object = new Wallpass(j, i, Sprite.powerup_wallpass.getFxImage());
+                            itemsList.add(object);
+                            object = new Brick(j, i, Sprite.brick.getFxImage());
+                            stillObjects.add(object);
+                            break;
+                        }
+                        case '?': {
+                            object = new Random(j, i, Sprite.powerup_random.getFxImage());
+                            itemsList.add(object);
+                            object = new Brick(j, i, Sprite.brick.getFxImage());
+                            stillObjects.add(object);
                             break;
                         }
                         default: {

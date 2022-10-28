@@ -14,6 +14,8 @@ import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
 
 public abstract class Animal extends Entity {
     private boolean life = true;
+    private boolean through = false;
+    private boolean bombPass = false;
 
     private int countToRun = 0; //delay khi di chuyen
     public Animal(int x, int y, Image img) {
@@ -35,6 +37,21 @@ public abstract class Animal extends Entity {
 
     public boolean isLife() {
         return life;
+    }
+    public void setThrough(boolean through) {
+        this.through = through;
+    }
+
+    public boolean isThrough() {
+        return through;
+    }
+
+    public void setBombPass(boolean bombPass) {
+        this.bombPass = bombPass;
+    }
+
+    public boolean isBombPass() {
+        return bombPass;
     }
 
     public void setCountToRun(int countToRun) {

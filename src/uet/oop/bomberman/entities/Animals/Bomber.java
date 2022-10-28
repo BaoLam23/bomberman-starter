@@ -15,6 +15,7 @@ import static uet.oop.bomberman.entities.Bomb.hasBomb;
 import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
 
 public class Bomber extends Animal {
+
     public Bomber(int x, int y, Image img) {
         super( x, y, img);
     }
@@ -43,7 +44,9 @@ public class Bomber extends Animal {
     }
     @Override
     public void update() {
-        checkBomb(bomberman);
+        if (!bomberman.isBombPass()) {
+            checkBomb(bomberman);
+        }
         checkEnemy();
 
         spriteCounter++;

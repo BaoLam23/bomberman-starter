@@ -7,6 +7,8 @@ import static uet.oop.bomberman.BombermanGame.*;
 public class Level2 {
     public Level2() {
         bomberman.setLife(true);
+        bomberman.setThrough(false);
+        bomberman.setBombPass(false);
         bomberman.setSprite(Sprite.player_right.getFxImage());
         bomberman.setX(32);
         bomberman.setY(32);
