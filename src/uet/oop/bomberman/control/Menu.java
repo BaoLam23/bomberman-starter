@@ -27,6 +27,7 @@ public class Menu {
     private static ImageView statusGame;
     public static Text level, bomb, time;
     public static int bombNumber = 20, timeNumber = 120;
+    private static int timeChanger = 0;
 
     public static void createMenu(Group root) {
         level = new Text("Level: 1");
@@ -39,7 +40,7 @@ public class Menu {
         bomb.setFill(Color.WHITE);
         bomb.setX(100);
         bomb.setY(20);
-        time = new Text("Times: 120");
+        time = new Text("Time: 120");
         time.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         time.setFill(Color.WHITE);
         time.setX(100);
@@ -75,8 +76,15 @@ public class Menu {
     }
 
     public static void updateMenu() {
+        timeChanger++;
+        if (timeChanger > 60) {
+            timeNumber--;
+            timeChanger = 0;
+        }
+
         level.setText("Level: " + _level);
         bomb.setText("Bombs: " + bombNumber);
+        time.setText("Time: " + timeNumber);
 
         if (bomberman.isLife())
             if (running) {

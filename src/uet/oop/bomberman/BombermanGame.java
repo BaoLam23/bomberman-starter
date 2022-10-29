@@ -18,6 +18,9 @@ import uet.oop.bomberman.entities.Animals.Animal;
 import uet.oop.bomberman.entities.Animals.Bomber;
 import uet.oop.bomberman.graphics.Sprite;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -62,7 +65,7 @@ public class BombermanGame extends Application {
         // e
         gc = canvas.getGraphicsContext2D();
         // s
-        Image author = new Image("mainMenu.png");
+        Image author = new Image(new File("res/textures/mainMenu.png").toURI().toString());
         authorView = new ImageView(author);
         authorView.setY(32);
         //authorView.setX(32);
