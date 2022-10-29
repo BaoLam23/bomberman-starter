@@ -2,6 +2,8 @@ package uet.oop.bomberman.Level;
 
 import uet.oop.bomberman.entities.*;
 import uet.oop.bomberman.entities.Animals.Balloom;
+import uet.oop.bomberman.entities.Animals.Doll;
+import uet.oop.bomberman.entities.Animals.Minvo;
 import uet.oop.bomberman.entities.Animals.Oneal;
 import uet.oop.bomberman.entities.Items.Bombpass;
 import uet.oop.bomberman.entities.Items.Random;
@@ -60,13 +62,6 @@ public class CreateMap {
                             stillObjects.add(object);
                             break;
                         }
-                        case 'x': {
-                            object = new Grass(j, i, Sprite.grass.getFxImage());
-                            stillObjects.add(object);
-//                            object = new Portal(j, i, Sprite.portal.getFxImage());
-//                            stillObjects.add(object);
-                            break;
-                        }
                         case '1': {
                             object = new Grass(j, i, Sprite.grass.getFxImage());
                             stillObjects.add(object);
@@ -81,7 +76,20 @@ public class CreateMap {
                             entities.add(object);
                             break;
                         }
-
+                        case '3': {
+                            object = new Grass(j, i, Sprite.grass.getFxImage());
+                            stillObjects.add(object);
+                            object = new Minvo(j, i, Sprite.minvo_left1.getFxImage());
+                            entities.add(object);
+                            break;
+                        }
+                        case '4': {
+                            object = new Grass(j, i, Sprite.grass.getFxImage());
+                            stillObjects.add(object);
+                            object = new Doll(j, i, Sprite.doll_left1.getFxImage());
+                            entities.add(object);
+                            break;
+                        }
                         case 'b': {
                             object = new Bombpass(j, i, Sprite.powerup_bombpass.getFxImage());
                             itemsList.add(object);

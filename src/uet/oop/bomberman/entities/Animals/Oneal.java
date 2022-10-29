@@ -25,7 +25,6 @@ public class Oneal extends Animal {
     }
 
     public void bombKillOnel() {
-        //this.setSprite(Sprite.Oneal_dead.getFxImage());
         Sound.enemyDying();
         entities.remove(this);
     }

@@ -33,7 +33,7 @@ public class Bomber extends Animal {
 
     public void checkEnemy() {
         for (Entity entity : entities) {
-            if (entity instanceof Balloom || entity instanceof Oneal) {
+            if (entity instanceof Balloom || entity instanceof Oneal || entity instanceof Minvo) {
                 if (entity.getX() == bomberman.getX() && entity.getY() == bomberman.getY()) {
                     bomberman.setLife(false);
                 }

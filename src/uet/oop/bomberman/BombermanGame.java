@@ -15,13 +15,9 @@ import uet.oop.bomberman.control.Menu;
 import uet.oop.bomberman.control.Sound;
 import uet.oop.bomberman.entities.*;
 import uet.oop.bomberman.entities.Animals.Animal;
-import uet.oop.bomberman.entities.Animals.Balloom;
 import uet.oop.bomberman.entities.Animals.Bomber;
-import uet.oop.bomberman.entities.Animals.Oneal;
 import uet.oop.bomberman.graphics.Sprite;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -187,8 +183,6 @@ public class BombermanGame extends Application {
         bomberman.setLife(false);
         timer.start();
 
-        //createMap();
-
 
     }
 
@@ -201,9 +195,10 @@ public class BombermanGame extends Application {
 
         if (entities.size() == 0 && !isPortal && !win) {
             portal = new Portal(3, 4, Sprite.portal.getFxImage());
+            isPortal = true;
             entities.add(portal);
         }
-        if (portal != null) {
+        if (portal != null && isPortal) {
             if (bomberman.getX() == portal.getX() && bomberman.getY() == portal.getY()) {
                 win = true;
             }
