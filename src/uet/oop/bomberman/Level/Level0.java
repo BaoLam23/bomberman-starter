@@ -16,6 +16,7 @@ public class Level0 {
         entities.clear();
         stillObjects.clear();
         killObjects.clear();
+        itemsList.clear();
         setTimeNumber(100);
         new CreateMap("res/levels/Level0.txt");
     }

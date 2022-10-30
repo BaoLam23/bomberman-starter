@@ -11,6 +11,7 @@ import uet.oop.bomberman.graphics.Sprite;
 import java.io.File;
 
 import static uet.oop.bomberman.BombermanGame.*;
+import static uet.oop.bomberman.control.Menu.bomb;
 import static uet.oop.bomberman.control.Menu.getTimeNumber;
 
 public class Bomber extends Animal {
@@ -32,7 +33,7 @@ public class Bomber extends Animal {
 
     public void checkEnemy() {
         for (Entity entity : entities) {
-            if (entity instanceof Balloom || entity instanceof Oneal || entity instanceof Minvo) {
+            if (entity instanceof Balloom || entity instanceof Oneal || entity instanceof Minvo || entity instanceof Doll) {
                 if (entity.getX() == bomberman.getX() && entity.getY() == bomberman.getY()) {
                     bomberman.setLife(false);
                 }
