@@ -1,7 +1,6 @@
 package uet.oop.bomberman.entities.Animals;
 
 import javafx.scene.image.Image;
-import javafx.util.Pair;
 import uet.oop.bomberman.AI.AStar;
 import uet.oop.bomberman.AI.Node;
 import uet.oop.bomberman.control.Sound;
@@ -11,9 +10,6 @@ import uet.oop.bomberman.entities.Wall;
 import uet.oop.bomberman.graphics.Sprite;
 
 import java.util.List;
-import java.util.Vector;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 
 import static uet.oop.bomberman.BombermanGame.*;
 

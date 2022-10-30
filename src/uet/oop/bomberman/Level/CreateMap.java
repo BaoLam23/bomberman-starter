@@ -72,7 +72,7 @@ public class CreateMap {
                         case '2': {
                             object = new Grass(j, i, Sprite.grass.getFxImage());
                             stillObjects.add(object);
-                            object = new Oneal(j, i, Sprite.oneal_left1.getFxImage());
+                            object = new Doll(j, i, Sprite.doll_left1.getFxImage());
                             entities.add(object);
                             break;
                         }
@@ -86,7 +86,7 @@ public class CreateMap {
                         case '4': {
                             object = new Grass(j, i, Sprite.grass.getFxImage());
                             stillObjects.add(object);
-                            object = new Doll(j, i, Sprite.doll_left1.getFxImage());
+                            object = new Oneal(j, i, Sprite.oneal_left1.getFxImage());
                             entities.add(object);
                             break;
                         }

@@ -13,10 +13,6 @@ public class Random extends Item {
         super(x, y, img);
     }
 
-    public Random(boolean getItem) {
-        super(getItem);
-    }
-
     @Override
     public void setSprite(Image newSprite) {
     }
@@ -46,26 +42,5 @@ public class Random extends Item {
                 }
             }
         }
-//        for (Entity entity : itemsList) {
-//            int x = entity.getX();
-//            int y = entity.getY();
-//            if (bomberman.getX() == x && bomberman.getY() == y) {
-//                itemsList.remove(entity);
-//                Entity object = new Grass(x / 32, y / 32, Sprite.grass.getFxImage());
-//                stillObjects.add(object);
-//                int random = (int) (Math.random() * 2 + 1);
-//                switch (random) {
-//                    case 1: {
-//                        bomberman.setBombPass(true);
-//                        break;
-//                    }
-//                    case 2: {
-//                        bomberman.setThrough(true);
-//                        break;
-//                    }
-//                }
-//
-//            }
-//        }
     }
 }

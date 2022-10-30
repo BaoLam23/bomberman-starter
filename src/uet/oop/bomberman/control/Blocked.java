@@ -5,7 +5,6 @@ import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.Grass;
 import uet.oop.bomberman.entities.Wall;
 
-import static uet.oop.bomberman.BombermanGame.bomberman;
 import static uet.oop.bomberman.BombermanGame.stillObjects;
 import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
 
@@ -92,13 +91,4 @@ public class Blocked {
         }
         return false;
     }
-//    public static boolean blockedAround(Animal animal) {
-//        for (Entity e : stillObjects) {
-//            if (e instanceof Wall) {
-//                if (e.getX() == 32 || e.getX() == 960 || e.getY() == 32 || e.getY() == 384) {
-//                    return true;
-//                }
-//            }
-//        }
-//    }
 }

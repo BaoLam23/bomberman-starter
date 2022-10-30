@@ -3,6 +3,7 @@ package uet.oop.bomberman.Level;
 import uet.oop.bomberman.graphics.Sprite;
 
 import static uet.oop.bomberman.BombermanGame.*;
+import static uet.oop.bomberman.control.Menu.setTimeNumber;
 
 public class Level1 {
     public Level1() {
@@ -15,6 +16,7 @@ public class Level1 {
         entities.clear();
         stillObjects.clear();
         killObjects.clear();
-        new CreateMap("res/levels/Level0.txt");
+        setTimeNumber(100);
+        new CreateMap("res/levels/Level1.txt");
     }
 }

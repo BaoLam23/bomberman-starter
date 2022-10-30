@@ -11,8 +11,7 @@ import uet.oop.bomberman.graphics.Sprite;
 import java.io.File;
 
 import static uet.oop.bomberman.BombermanGame.*;
-import static uet.oop.bomberman.entities.Bomb.hasBomb;
-import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
+import static uet.oop.bomberman.control.Menu.getTimeNumber;
 
 public class Bomber extends Animal {
 
@@ -39,8 +38,12 @@ public class Bomber extends Animal {
                 }
             }
         }
+    }
 
-
+    public void checkTime() {
+        if (getTimeNumber() == 0) {
+            bomberman.setLife(false);
+        }
     }
     @Override
     public void update() {
@@ -48,7 +51,7 @@ public class Bomber extends Animal {
             checkBomb(bomberman);
         }
         checkEnemy();
-
+        checkTime();
         spriteCounter++;
 
         if (spriteCounter > 10) {

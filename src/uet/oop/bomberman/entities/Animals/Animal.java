@@ -5,11 +5,8 @@ import uet.oop.bomberman.control.Blocked;
 import uet.oop.bomberman.entities.Bomb;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.Flame;
-
-import static uet.oop.bomberman.BombermanGame.bomberman;
 import static uet.oop.bomberman.BombermanGame.killObjects;
 import static uet.oop.bomberman.entities.Bomb.exploded;
-import static uet.oop.bomberman.entities.Bomb.hasBomb;
 import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
 
 public abstract class Animal extends Entity {

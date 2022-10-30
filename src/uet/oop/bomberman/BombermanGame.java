@@ -1,5 +1,11 @@
 package uet.oop.bomberman;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -17,15 +23,6 @@ import uet.oop.bomberman.entities.*;
 import uet.oop.bomberman.entities.Animals.Animal;
 import uet.oop.bomberman.entities.Animals.Bomber;
 import uet.oop.bomberman.graphics.Sprite;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-
 import static uet.oop.bomberman.Level.LevelUp.levelUp;
 import static uet.oop.bomberman.Level.LevelUp.win;
 import static uet.oop.bomberman.control.Menu.updateMenu;
@@ -60,31 +57,19 @@ public class BombermanGame extends Application {
     public void start(Stage stage) {
         // Tao Canvas
         canvas = new Canvas(Sprite.SCALED_SIZE * WIDTH, Sprite.SCALED_SIZE * HEIGHT);
-        // s
         canvas.setTranslateY(32);
-        // e
         gc = canvas.getGraphicsContext2D();
-        // s
         Image author = new Image(new File("res/textures/mainMenu.png").toURI().toString());
         authorView = new ImageView(author);
         authorView.setY(32);
-        //authorView.setX(32);
-//        authorView.setScaleX(0.5);
-//        authorView.setScaleY(0.5);
-        // e
-        // Tao root container
+
         root = new Group();
-        // s
         Menu.createMenu(root);
-        // e
         root.getChildren().add(canvas);
-        // s
         root.getChildren().add(authorView);
-        // e
 
         // Tao scene
         Scene scene = new Scene(root);
-
 
         scene.setOnKeyPressed(
                 new EventHandler<KeyEvent>()
@@ -158,10 +143,8 @@ public class BombermanGame extends Application {
                 });
         // Them scene vao stage
         stage.setScene(scene);
-        // s
         mainStage = stage;
         mainStage.show();
-        // e
         //stage.show();
 
         Sound.startJingle();
@@ -208,7 +191,6 @@ public class BombermanGame extends Application {
         }
 
         levelUp();
-        //updateSound();
     }
 
     public void render() {

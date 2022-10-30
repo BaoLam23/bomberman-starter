@@ -1,52 +1,48 @@
 package uet.oop.bomberman.control;
 
-import javafx.event.EventHandler;
 import javafx.scene.Group;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import uet.oop.bomberman.BombermanGame;
+import uet.oop.bomberman.Level.Level0;
 import uet.oop.bomberman.Level.Level1;
 import uet.oop.bomberman.graphics.Sprite;
-
 import java.io.File;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 
 import static uet.oop.bomberman.BombermanGame.root;
-
 import static uet.oop.bomberman.BombermanGame.*;
 
 public class Menu {
     private static ImageView statusGame;
     public static Text level, bomb, time;
-    public static int bombNumber = 20, timeNumber = 120;
+    private static int timeNumber;
     private static int timeChanger = 0;
 
+    public static void setTimeNumber(int timeNumber) {
+        Menu.timeNumber = timeNumber;
+    }
+
+    public static int getTimeNumber() {
+        return timeNumber;
+    }
+
     public static void createMenu(Group root) {
-        level = new Text("Level: 1");
-        level.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        level = new Text("Level:");
+        level.setFont(Font.loadFont("file:res/fonts/PixeloidSansBold-RpeJo.ttf", 14));
         level.setFill(Color.WHITE);
         level.setX(20);
         level.setY(20);
-        bomb = new Text("Bombs: 20");
-        bomb.setFont(Font.font("Arial", FontWeight.BOLD, 14));
-        bomb.setFill(Color.WHITE);
-        bomb.setX(100);
-        bomb.setY(20);
-        time = new Text("Time: 120");
-        time.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+
+        time = new Text("Time:");
+        time.setFont(Font.loadFont("file:res/fonts/PixeloidSansBold-RpeJo.ttf", 14));
         time.setFill(Color.WHITE);
-        time.setX(100);
+        time.setX(120);
         time.setY(20);
 
-        //Image newGame = new Image("newGame.png");
         Image newGame = new Image(new File("res/textures/start.png").toURI().toString());
         statusGame = new ImageView(newGame);
         statusGame.setX(850);
@@ -57,17 +53,15 @@ public class Menu {
         Pane pane = new Pane();
         pane.getChildren().addAll(level, time, statusGame);
         pane.setMinSize(Sprite.SCALED_SIZE * WIDTH, 20);
-        //pane.setMaxSize(800, 480);
-        pane.setStyle("-fx-background-color: #353535");
+        pane.setStyle("-fx-background-color: black");
 
         root.getChildren().add(pane);
-
 
         statusGame.setOnMouseClicked(event -> {
             if (bomberman.isLife()) {
                 running = !running;
             } else {
-                new Level1();
+                new Level0();
                 running = true;
             }
             updateMenu();
@@ -76,14 +70,14 @@ public class Menu {
     }
 
     public static void updateMenu() {
-        timeChanger++;
-        if (timeChanger > 60) {
-            timeNumber--;
-            timeChanger = 0;
+        if (timeNumber > 0 && bomberman.isLife()) {
+            timeChanger++;
+            if (timeChanger > 60) {
+                timeNumber--;
+                timeChanger = 0;
+            }
         }
-
         level.setText("Level: " + _level);
-        bomb.setText("Bombs: " + bombNumber);
         time.setText("Time: " + timeNumber);
 
         if (bomberman.isLife())
@@ -98,11 +92,6 @@ public class Menu {
         else {
             Image newGame = new Image(new File("res/textures/start.png").toURI().toString());
             statusGame.setImage(newGame);
-//            Image gameOver = new Image(new File("res/textures/gameOver.png").toURI().toString());
-//            authorView.setImage(gameOver);
-//            if (!root.getChildren().contains(authorView)) {
-//                root.getChildren().add(authorView);
-//            }
         }
 
     }

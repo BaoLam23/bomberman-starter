@@ -13,10 +13,6 @@ public class Bombpass extends Item {
         super(x, y, img);
     }
 
-    public Bombpass(boolean getItem) {
-        super(getItem);
-    }
-
     @Override
     public void setSprite(Image newSprite) {
     }
@@ -35,15 +31,5 @@ public class Bombpass extends Item {
                 }
             }
         }
-//        for (Entity entity : itemsList) {
-//            int x = entity.getX();
-//            int y = entity.getY();
-//            if (bomberman.getX() == x && bomberman.getY() == y) {
-//                itemsList.remove(entity);
-//                Entity object = new Grass(x / 32, y / 32, Sprite.grass.getFxImage());
-//                stillObjects.add(object);
-//                bomberman.setBombPass(true);
-//            }
-//        }
     }
 }

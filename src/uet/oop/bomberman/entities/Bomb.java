@@ -8,7 +8,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 import static uet.oop.bomberman.BombermanGame.*;
-import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
 public class Bomb extends Entity {
 
     private static Entity bomb;
@@ -38,7 +37,6 @@ public class Bomb extends Entity {
             hasBomb = true;
             exploded = false;
 
-            //bomb = new Bomb(x, y, Sprite.bomb_exploded2.getFxImage());
             killObjects.add(bomb);
             stillObjects.add(bomb);
 
@@ -52,7 +50,6 @@ public class Bomb extends Entity {
 
             CompletableFuture.delayedExecutor(2, TimeUnit.SECONDS).execute(() -> {
                 Sound.bombExploding();
-                //hasBomb = false;
                 exploded = true;
 
                 flameLeft = new Flame(x - 1, y, Sprite.explosion_horizontal_left_last.getFxImage());
@@ -156,10 +153,7 @@ public class Bomb extends Entity {
     }
 
     private static boolean canExplode(int x, int y) {
-        if (getAt(x, y) instanceof Wall)
-            return false;
-
-        return true;
+        return !(getAt(x, y) instanceof Wall);
     }
 
     private static void breakBrick(int x, int y) {

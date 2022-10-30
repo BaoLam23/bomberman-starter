@@ -2,14 +2,8 @@ package uet.oop.bomberman.entities.Animals;
 
 import javafx.scene.image.Image;
 import uet.oop.bomberman.control.Sound;
-import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.graphics.Sprite;
-
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-
 import static uet.oop.bomberman.BombermanGame.entities;
-import static uet.oop.bomberman.BombermanGame.stillObjects;
 
 public class Balloom extends Animal {
     private int moveNum = 1;

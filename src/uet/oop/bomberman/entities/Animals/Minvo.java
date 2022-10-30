@@ -1,21 +1,14 @@
 package uet.oop.bomberman.entities.Animals;
 
 import javafx.scene.image.Image;
-import uet.oop.bomberman.AI.AStar;
-import uet.oop.bomberman.AI.Node;
 import uet.oop.bomberman.control.Blocked;
 import uet.oop.bomberman.control.Sound;
-import uet.oop.bomberman.entities.Brick;
-import uet.oop.bomberman.entities.Entity;
-import uet.oop.bomberman.entities.Wall;
 import uet.oop.bomberman.graphics.Sprite;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import static uet.oop.bomberman.BombermanGame.*;
-import static uet.oop.bomberman.BombermanGame.stillObjects;
 
 public class Minvo extends Animal {
     private int moveNum = 1;

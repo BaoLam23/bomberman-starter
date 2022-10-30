@@ -1,11 +1,6 @@
 package uet.oop.bomberman.control;
 
 import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import java.io.File;
-import java.nio.file.Paths;
-import java.util.Objects;
 
 public class Sound {
     public static void backgroundMusic() {
