@@ -13,6 +13,7 @@ import java.io.File;
 import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.control.Menu.bomb;
 import static uet.oop.bomberman.control.Menu.getTimeNumber;
+import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
 
 public class Bomber extends Animal {
 
@@ -73,4 +74,5 @@ public class Bomber extends Animal {
             }
         }
     }
+
 }
