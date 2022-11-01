@@ -26,9 +26,14 @@ public class Sprite {
 	|--------------------------------------------------------------------------
 	 */
 	public static Sprite grass = new Sprite(DEFAULT_SIZE, 6, 0, SpriteSheet.tiles, 16, 16);
+	public static Sprite grass1 = new Sprite(DEFAULT_SIZE, 6, 1, SpriteSheet.tiles, 16, 16);
+	public static Sprite grass2 = new Sprite(DEFAULT_SIZE, 6, 2, SpriteSheet.tiles, 16, 16);
+	public static Sprite grass3 = new Sprite(DEFAULT_SIZE, 6, 3, SpriteSheet.tiles, 16, 16);
+	public static Sprite skull = new Sprite(DEFAULT_SIZE, 8, 3, SpriteSheet.tiles, 16, 16);
 	public static Sprite brick = new Sprite(DEFAULT_SIZE, 7, 0, SpriteSheet.tiles, 16, 16);
+	public static Sprite table = new Sprite(DEFAULT_SIZE, 4, 1, SpriteSheet.tiles, 16, 16);
+	public static Sprite chair = new Sprite(DEFAULT_SIZE, 5, 1, SpriteSheet.tiles, 16, 16);
 	public static Sprite wall = new Sprite(DEFAULT_SIZE, 5, 0, SpriteSheet.tiles, 16, 16);
-
 	public static Sprite portal = new Sprite(DEFAULT_SIZE, 4, 0, SpriteSheet.tiles, 16, 16);
 	public static Sprite vase = new Sprite(DEFAULT_SIZE, 8, 0, SpriteSheet.tiles, 16, 16);
 	public static Sprite vase_broken = new Sprite(DEFAULT_SIZE, 8, 1, SpriteSheet.tiles, 16, 16);
@@ -176,7 +181,10 @@ public class Sprite {
 	public static Sprite brick_exploded = new Sprite(DEFAULT_SIZE, 7, 1, SpriteSheet.tiles, 16, 16);
 	public static Sprite brick_exploded1 = new Sprite(DEFAULT_SIZE, 7, 2, SpriteSheet.tiles, 16, 16);
 	public static Sprite brick_exploded2 = new Sprite(DEFAULT_SIZE, 7, 3, SpriteSheet.tiles, 16, 16);
-	
+	public static Sprite table_exploded = new Sprite(DEFAULT_SIZE, 4, 2, SpriteSheet.tiles, 16, 16);
+	public static Sprite table_exploded2 = new Sprite(DEFAULT_SIZE, 4, 3, SpriteSheet.tiles, 16, 16);
+	public static Sprite chair_exploded = new Sprite(DEFAULT_SIZE, 5, 2, SpriteSheet.tiles, 16, 16);
+	public static Sprite chair_exploded2 = new Sprite(DEFAULT_SIZE, 5, 3, SpriteSheet.tiles, 16, 16);
 	/*
 	|--------------------------------------------------------------------------
 	| Powerups

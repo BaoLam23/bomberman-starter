@@ -1,5 +1,6 @@
 package uet.oop.bomberman.Level;
 
+import javafx.scene.image.Image;
 import uet.oop.bomberman.entities.*;
 import uet.oop.bomberman.entities.Animals.Balloom;
 import uet.oop.bomberman.entities.Animals.Doll;
@@ -10,6 +11,7 @@ import uet.oop.bomberman.entities.Items.Random;
 import uet.oop.bomberman.entities.Items.Wallpass;
 import uet.oop.bomberman.graphics.Sprite;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -58,8 +60,10 @@ public class CreateMap {
                         case '*': {
                             object = new Grass(j, i, Sprite.grass.getFxImage());
                             stillObjects.add(object);
-                            object = new Brick(j, i, Sprite.brick.getFxImage());
-                            stillObjects.add(object);
+                            Brick brick = new Brick();
+                            brick.chooseType();
+                            brick = new Brick(j, i, brick.selectType());
+                            stillObjects.add(brick);
                             break;
                         }
                         case '1': {
@@ -93,26 +97,26 @@ public class CreateMap {
                         case 'b': {
                             object = new Bombpass(j, i, Sprite.powerup_bombpass.getFxImage());
                             itemsList.add(object);
-                            object = new Brick(j, i, Sprite.vase.getFxImage());
+                            object = new Vase(j, i, Sprite.vase.getFxImage());
                             stillObjects.add(object);
                             break;
                         }
                         case 'w': {
                             object = new Wallpass(j, i, Sprite.powerup_wallpass.getFxImage());
                             itemsList.add(object);
-                            object = new Brick(j, i, Sprite.vase.getFxImage());
+                            object = new Vase(j, i, Sprite.vase.getFxImage());
                             stillObjects.add(object);
                             break;
                         }
                         case '?': {
                             object = new Random(j, i, Sprite.powerup_random.getFxImage());
                             itemsList.add(object);
-                            object = new Brick(j, i, Sprite.vase.getFxImage());
+                            object = new Vase(j, i, Sprite.vase.getFxImage());
                             stillObjects.add(object);
                             break;
                         }
                         default: {
-                            object = new Grass(j, i, Sprite.grass.getFxImage());
+                            object = new Grass(j, i, Grass.selectGrass());
                             stillObjects.add(object);
                         }
                     }

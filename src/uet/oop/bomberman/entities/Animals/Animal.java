@@ -5,7 +5,12 @@ import uet.oop.bomberman.control.Blocked;
 import uet.oop.bomberman.entities.Bomb;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.Flame;
+import uet.oop.bomberman.entities.Grass;
+import uet.oop.bomberman.entities.Items.Bombpass;
+import uet.oop.bomberman.graphics.Sprite;
+
 import static uet.oop.bomberman.BombermanGame.killObjects;
+import static uet.oop.bomberman.BombermanGame.stillObjects;
 import static uet.oop.bomberman.entities.Bomb.exploded;
 import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
 
@@ -101,7 +106,12 @@ public abstract class Animal extends Entity {
                 }
             }
         }
+        if (!animal.isLife()) {
+            Entity object = new Grass(animal.getX() / 32, animal.getY() / 32, Sprite.skull.getFxImage());
+            stillObjects.add(object);
+        }
     }
+
     @Override
     public void update() {
 
