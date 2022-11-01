@@ -9,6 +9,8 @@ import uet.oop.bomberman.entities.Flame;
 import uet.oop.bomberman.graphics.Sprite;
 
 import java.io.File;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.control.Menu.bomb;
@@ -66,9 +68,19 @@ public class Bomber extends Animal {
             spriteCounter = 0;
         }
         if (!bomberman.isLife()) {
+            if (getSpriteNum() == 1)
+                setSprite(Sprite.player_dead1.getFxImage());
+
+            if (getSpriteNum() == 2)
+                setSprite(Sprite.player_dead2.getFxImage());
+
+            if (getSpriteNum() == 3)
+                setSprite(Sprite.player_dead3.getFxImage());
+
             bombKillPlayer((Bomber) bomberman);
             Image gameOver = new Image(new File("res/textures/gameOver.png").toURI().toString());
             authorView.setImage(gameOver);
+
             if (!root.getChildren().contains(authorView)) {
                 root.getChildren().add(authorView);
             }

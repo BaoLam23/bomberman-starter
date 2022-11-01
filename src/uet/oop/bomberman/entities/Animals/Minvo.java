@@ -106,7 +106,7 @@ public class Minvo extends Animal {
 
         moveNum++;
 
-        if(moveNum > 40) {
+        if(moveNum > 60) {
             this.findBomberman();
             moveNum = 1;
         }

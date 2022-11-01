@@ -91,7 +91,7 @@ public class Bomb extends Entity {
     public void update() {
         spriteCounter++;
 
-        if (spriteCounter > 20) {
+        if (spriteCounter > 15) {
             if (spriteNum == 1 || spriteNum == 2)
                 spriteNum++;
 

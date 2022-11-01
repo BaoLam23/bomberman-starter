@@ -93,21 +93,21 @@ public class CreateMap {
                         case 'b': {
                             object = new Bombpass(j, i, Sprite.powerup_bombpass.getFxImage());
                             itemsList.add(object);
-                            object = new Brick(j, i, Sprite.brick.getFxImage());
+                            object = new Brick(j, i, Sprite.vase.getFxImage());
                             stillObjects.add(object);
                             break;
                         }
                         case 'w': {
                             object = new Wallpass(j, i, Sprite.powerup_wallpass.getFxImage());
                             itemsList.add(object);
-                            object = new Brick(j, i, Sprite.brick.getFxImage());
+                            object = new Brick(j, i, Sprite.vase.getFxImage());
                             stillObjects.add(object);
                             break;
                         }
                         case '?': {
                             object = new Random(j, i, Sprite.powerup_random.getFxImage());
                             itemsList.add(object);
-                            object = new Brick(j, i, Sprite.brick.getFxImage());
+                            object = new Brick(j, i, Sprite.vase.getFxImage());
                             stillObjects.add(object);
                             break;
                         }

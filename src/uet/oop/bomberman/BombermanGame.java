@@ -48,8 +48,8 @@ public class BombermanGame extends Application {
     public static ImageView authorView;
     public static int _level = 1;
     public static Stage mainStage = null;
-    private int speed = 0;
 
+    private int bomberSpeed = 0;
     public static void main(String[] args) {
         Application.launch(BombermanGame.class);
     }
@@ -78,8 +78,8 @@ public class BombermanGame extends Application {
                 {
                     public void handle(KeyEvent e)
                     {
-                        speed++;
-                        if(speed < 3) {
+                        bomberSpeed++;
+                        if(bomberSpeed < bomberman.getSpeed() && bomberman.isLife()) {
                             switch (e.getCode()) {
                                 case UP: {
                                     bomberman.moveUp();
@@ -145,7 +145,7 @@ public class BombermanGame extends Application {
                             }
                         }
 
-                        CompletableFuture.delayedExecutor(150, TimeUnit.MILLISECONDS).execute(() -> speed--);
+                        CompletableFuture.delayedExecutor(120, TimeUnit.MILLISECONDS).execute(() -> bomberSpeed--);
                     }
                 });
         // Them scene vao stage

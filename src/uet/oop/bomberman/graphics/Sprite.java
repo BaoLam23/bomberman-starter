@@ -28,7 +28,12 @@ public class Sprite {
 	public static Sprite grass = new Sprite(DEFAULT_SIZE, 6, 0, SpriteSheet.tiles, 16, 16);
 	public static Sprite brick = new Sprite(DEFAULT_SIZE, 7, 0, SpriteSheet.tiles, 16, 16);
 	public static Sprite wall = new Sprite(DEFAULT_SIZE, 5, 0, SpriteSheet.tiles, 16, 16);
-	public static Sprite portal = new Sprite(DEFAULT_SIZE, 4, 0, SpriteSheet.tiles, 14, 14);
+
+	public static Sprite portal = new Sprite(DEFAULT_SIZE, 4, 0, SpriteSheet.tiles, 16, 16);
+	public static Sprite vase = new Sprite(DEFAULT_SIZE, 8, 0, SpriteSheet.tiles, 16, 16);
+	public static Sprite vase_broken = new Sprite(DEFAULT_SIZE, 8, 1, SpriteSheet.tiles, 16, 16);
+	public static Sprite vase_broken2 = new Sprite(DEFAULT_SIZE, 8, 2, SpriteSheet.tiles, 16, 16);
+
 	
 	/*
 	|--------------------------------------------------------------------------

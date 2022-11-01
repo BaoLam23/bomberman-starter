@@ -61,7 +61,7 @@ public class Balloom extends Animal {
         moveNum++;
 
         int dir = (int) (Math.random() * 4 + 1);
-        if(moveNum > 40) {
+        if(moveNum > 60) {
             switch (dir) {
                 case 1: {
                     this.moveLeft();

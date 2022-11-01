@@ -14,6 +14,8 @@ public abstract class Animal extends Entity {
     private boolean through = false;
     private boolean bombPass = false;
 
+    private int speed = 2;
+
     private int countToRun = 0; //delay khi di chuyen
     public Animal(int x, int y, Image img) {
         super( x, y, img);
@@ -57,6 +59,14 @@ public abstract class Animal extends Entity {
 
     public int getCountToRun() {
         return countToRun;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 
     public void moveUp() {
