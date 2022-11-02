@@ -53,8 +53,6 @@ public class CreateMap {
                     Entity object = null;
                     switch (matrix[i][j]) {
                         case '#': {
-                            object = new Grass(j, i, Sprite.grass.getFxImage());
-                            stillObjects.add(object);
                             object = new Wall(j, i, Wall.selectWall());
                             stillObjects.add(object);
                             break;
