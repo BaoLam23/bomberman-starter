@@ -7,6 +7,7 @@ import uet.oop.bomberman.entities.Animals.Doll;
 import uet.oop.bomberman.entities.Animals.Minvo;
 import uet.oop.bomberman.entities.Animals.Oneal;
 import uet.oop.bomberman.entities.Items.Bombpass;
+import uet.oop.bomberman.entities.Items.ExtraTime;
 import uet.oop.bomberman.entities.Items.Random;
 import uet.oop.bomberman.entities.Items.Wallpass;
 import uet.oop.bomberman.graphics.Sprite;
@@ -114,6 +115,13 @@ public class CreateMap {
                         }
                         case '?': {
                             object = new Random(j, i, Sprite.powerup_random.getFxImage());
+                            itemsList.add(object);
+                            object = new Vase(j, i, Sprite.vase.getFxImage());
+                            stillObjects.add(object);
+                            break;
+                        }
+                        case 't': {
+                            object = new ExtraTime(j, i, Sprite.powerup_extratime.getFxImage());
                             itemsList.add(object);
                             object = new Vase(j, i, Sprite.vase.getFxImage());
                             stillObjects.add(object);
