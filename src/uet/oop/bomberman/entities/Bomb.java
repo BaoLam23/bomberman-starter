@@ -239,21 +239,25 @@ public class Bomb extends Entity {
         if (v1 != null) {
             v1.isBroken = true;
             v1.setSpriteNum(1);
+            Sound.vaseBreaking();
         }
 
         if (v2 != null) {
             v2.isBroken = true;
             v2.setSpriteNum(1);
+            Sound.vaseBreaking();
         }
 
         if (v3 != null) {
             v3.isBroken = true;
             v3.setSpriteNum(1);
+            Sound.vaseBreaking();
         }
 
         if (v4 != null){
             v4.isBroken = true;
             v4.setSpriteNum(1);
+            Sound.vaseBreaking();
         }
 
         Vase finalV = v1;

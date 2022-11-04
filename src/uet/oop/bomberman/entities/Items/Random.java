@@ -1,6 +1,7 @@
 package uet.oop.bomberman.entities.Items;
 
 import javafx.scene.image.Image;
+import uet.oop.bomberman.control.Sound;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.Grass;
 import uet.oop.bomberman.graphics.Sprite;
@@ -25,6 +26,7 @@ public class Random extends Item {
                 int x = entity.getX();
                 int y = entity.getY();
                 if (bomberman.getX() == x && bomberman.getY() == y) {
+                    Sound.powerUp();
                     itemsList.remove(entity);
                     Entity object = new Grass(x / 32, y / 32, Sprite.grass.getFxImage());
                     stillObjects.add(object);

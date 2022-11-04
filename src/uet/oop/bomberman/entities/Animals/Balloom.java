@@ -22,7 +22,7 @@ public class Balloom extends Animal {
     public void update() {
         spriteCounter++;
 
-        if (spriteCounter > 10) {
+        if (spriteCounter > 20) {
             if (spriteNum == 1 || spriteNum == 2)
                 spriteNum++;
 

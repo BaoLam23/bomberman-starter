@@ -3,6 +3,13 @@ package uet.oop.bomberman.control;
 import javafx.scene.media.AudioClip;
 
 public class Sound {
+
+    /*
+	|--------------------------------------------------------------------------
+	| System Sounds
+	|--------------------------------------------------------------------------
+	 */
+
     public static void backgroundNoise() {
         AudioClip buzzer = new AudioClip(Sound.class.getResource("/sounds/BG Noise.mp3").toExternalForm());
         buzzer.setCycleCount(AudioClip.INDEFINITE);
@@ -13,24 +20,27 @@ public class Sound {
     public static void backgroundMusic() {
         AudioClip buzzer = new AudioClip(Sound.class.getResource("/sounds/BG Music.mp3").toExternalForm());
         buzzer.setCycleCount(AudioClip.INDEFINITE);
-        //buzzer.setVolume(0.2);
+        buzzer.setVolume(0.7);
         buzzer.play();
     }
 
-    public static void bombExploding() {
-        AudioClip explosion = new AudioClip(Sound.class.getResource("/sounds/Effects/Bomb Explodes.wav").toExternalForm());
-        explosion.play();
+    public static void startJingle() {
+        AudioClip jingle = new AudioClip(Sound.class.getResource("/sounds/Effects/Start Jingle.wav").toExternalForm());
+        jingle.setVolume(0.6);
+        jingle.play();
     }
 
-    public static void bombBouncing() {
-        AudioClip bounce = new AudioClip(Sound.class.getResource("/sounds/Effects/Bomb Bouncing on Blocks.wav").toExternalForm());
-        bounce.play();
+    public static void gameStart() {
+        AudioClip gameStart = new AudioClip(Sound.class.getResource("/sounds/Effects/Game Start.wav").toExternalForm());
+        gameStart.play();
+        gameStart.setVolume(0.5);
     }
 
-    public static void bombPlaced() {
-        AudioClip explosion = new AudioClip(Sound.class.getResource("/sounds/Effects/Place Bomb.wav").toExternalForm());
-        explosion.play();
-    }
+    /*
+	|--------------------------------------------------------------------------
+	| Player Sounds
+	|--------------------------------------------------------------------------
+	 */
 
     public static void walking() {
         int random = (int) (Math.random() * 2 + 1);
@@ -51,20 +61,48 @@ public class Sound {
         dying.play();
     }
 
+    public static void powerUp() {
+        AudioClip power = new AudioClip(Sound.class.getResource("/sounds/Effects/Powerup.wav").toExternalForm());
+        power.setVolume(0.5);
+        power.play();
+    }
+
+    public static void bombExploding() {
+        AudioClip explosion = new AudioClip(Sound.class.getResource("/sounds/Effects/Bomb Explodes.wav").toExternalForm());
+        explosion.play();
+    }
+
+    public static void bombBouncing() {
+        AudioClip bounce = new AudioClip(Sound.class.getResource("/sounds/Effects/Bomb Bouncing on Blocks.wav").toExternalForm());
+        bounce.setVolume(0.5);
+        bounce.play();
+    }
+
+    public static void bombPlaced() {
+        AudioClip explosion = new AudioClip(Sound.class.getResource("/sounds/Effects/Place Bomb.wav").toExternalForm());
+        explosion.setVolume(0.5);
+        explosion.play();
+    }
+
+
+    /*
+	|--------------------------------------------------------------------------
+	| Entity Sounds
+	|--------------------------------------------------------------------------
+	 */
+
     public static void enemyDying() {
         AudioClip dying = new AudioClip(Sound.class.getResource("/sounds/Effects/Enemy Dies.wav").toExternalForm());
         dying.setVolume(0.5);
         dying.play();
     }
 
-    public static void startJingle() {
-        AudioClip jingle = new AudioClip(Sound.class.getResource("/sounds/Effects/Start Jingle.wav").toExternalForm());
-        jingle.play();
+    public static void vaseBreaking() {
+        AudioClip vase = new AudioClip(Sound.class.getResource("/sounds/Effects/Vase Breaking.wav").toExternalForm());
+        vase.play();
+        vase.setVolume(0.1);
     }
 
-    public static void gameStart() {
-        AudioClip gameStart = new AudioClip(Sound.class.getResource("/sounds/Effects/Game Start.wav").toExternalForm());
-        gameStart.play();
-    }
+
 }
 

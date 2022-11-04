@@ -158,7 +158,10 @@ public class BombermanGame extends Application {
 
 
                         CompletableFuture.delayedExecutor(120, TimeUnit.MILLISECONDS).execute(() -> bomberSpeed--);
+
                     }
+
+
                 });
         // Them scene vao stage
         stage.setScene(scene);

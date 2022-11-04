@@ -1,6 +1,7 @@
 package uet.oop.bomberman.entities.Items;
 
 import javafx.scene.image.Image;
+import uet.oop.bomberman.control.Sound;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.Grass;
 import uet.oop.bomberman.graphics.Sprite;
@@ -24,6 +25,7 @@ public class Bombpass extends Item {
                 int x = itemsList.get(i).getX();
                 int y = itemsList.get(i).getY();
                 if (bomberman.getX() == x && bomberman.getY() == y) {
+                    Sound.powerUp();
                     itemsList.remove(itemsList.get(i));
                     Entity object = new Grass(x / 32, y / 32, Sprite.grass.getFxImage());
                     stillObjects.add(object);
