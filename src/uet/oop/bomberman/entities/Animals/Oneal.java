@@ -14,6 +14,7 @@ import java.util.List;
 import static uet.oop.bomberman.BombermanGame.*;
 
 public class Oneal extends Animal {
+    private boolean isFacingLeft = false;
     private int moveNum = 1;
 
     public Oneal(int x, int y, Image img) {
@@ -54,10 +55,16 @@ public class Oneal extends Animal {
                 this.moveUp();
             if (this.getY() / 32 < nextY)
                 this.moveDown();
-            if (this.getX() / 32 > nextX)
+            if (this.getX() / 32 > nextX) {
                 this.moveLeft();
-            if (this.getX() / 32 < nextX)
+                isFacingLeft = true;
+            }
+
+            if (this.getX() / 32 < nextX) {
                 this.moveRight();
+                isFacingLeft = false;
+            }
+
         }
     }
     @Override
@@ -79,7 +86,6 @@ public class Oneal extends Animal {
             spriteCounter = 0;
         }
 
-        boolean isFacingLeft = false;
         if (!isFacingLeft) {
             if (spriteNum == 1)
                 setSprite(Sprite.oneal_right1.getFxImage());

@@ -1,21 +1,13 @@
 package uet.oop.bomberman.entities.Animals;
 
 import javafx.scene.image.Image;
-import uet.oop.bomberman.control.Blocked;
-import uet.oop.bomberman.control.Sound;
-import uet.oop.bomberman.entities.Bomb;
 import uet.oop.bomberman.entities.Entity;
-import uet.oop.bomberman.entities.Flame;
 import uet.oop.bomberman.graphics.Sprite;
 
 import java.io.File;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 
 import static uet.oop.bomberman.BombermanGame.*;
-import static uet.oop.bomberman.control.Menu.bomb;
 import static uet.oop.bomberman.control.Menu.getTimeNumber;
-import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
 
 public class Bomber extends Animal {
 

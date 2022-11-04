@@ -25,7 +25,6 @@ public class CreateMap {
             FileReader reader = new FileReader(path);
             BufferedReader buffRead = new BufferedReader(reader);
             String firstLine = buffRead.readLine();
-            System.out.println(firstLine);
             int L = 0, R = 0, C = 0;
 
             String[] tokens = firstLine.split(" ");
