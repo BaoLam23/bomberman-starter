@@ -18,7 +18,7 @@ import static uet.oop.bomberman.BombermanGame.*;
 
 public class Menu {
     private static ImageView statusGame;
-    public static Text level, bomb, time;
+    public static Text level, time;
     private static int timeNumber;
     private static int timeChanger = 0;
 

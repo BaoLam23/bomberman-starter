@@ -11,6 +11,7 @@ import java.util.Collections;
 import static uet.oop.bomberman.BombermanGame.*;
 
 public class Minvo extends Animal {
+    private boolean isFacingLeft = false;
     private int moveNum = 1;
 
     public Minvo(int x, int y, Image img) {
@@ -57,8 +58,10 @@ public class Minvo extends Animal {
             this.moveDown();
         } else if(tmp == left) {
             this.moveLeft();
+            isFacingLeft = true;
         } else if(tmp == right) {
             this.moveRight();
+            isFacingLeft = false;
         }
 
     }
@@ -81,7 +84,6 @@ public class Minvo extends Animal {
             spriteCounter = 0;
         }
 
-        boolean isFacingLeft = false;
         if (!isFacingLeft) {
             if (spriteNum == 1)
                 setSprite(Sprite.minvo_right1.getFxImage());
