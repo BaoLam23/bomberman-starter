@@ -18,7 +18,7 @@ public class Vase extends Entity {
     public void update() {
         spriteCounter++;
 
-        if (spriteCounter > 100) {
+        if (spriteCounter > 50) {
             if (spriteNum == 1 || spriteNum == 2)
                 spriteNum++;
 

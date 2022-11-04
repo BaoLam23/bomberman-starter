@@ -79,62 +79,74 @@ public class BombermanGame extends Application {
                     public void handle(KeyEvent e)
                     {
                         bomberSpeed++;
-                        if(bomberSpeed < bomberman.getSpeed() && bomberman.isLife()) {
+
                             switch (e.getCode()) {
                                 case UP: {
-                                    bomberman.moveUp();
-                                    if (bomberman.getSpriteNum() == 1)
-                                        bomberman.setSprite(Sprite.player_up.getFxImage());
+                                    if(bomberSpeed < bomberman.getSpeed()) {
+                                        bomberman.moveUp();
+                                        if (bomberman.getSpriteNum() == 1)
+                                            bomberman.setSprite(Sprite.player_up.getFxImage());
 
-                                    if (bomberman.getSpriteNum() == 2)
-                                        bomberman.setSprite(Sprite.player_up_1.getFxImage());
+                                        if (bomberman.getSpriteNum() == 2)
+                                            bomberman.setSprite(Sprite.player_up_1.getFxImage());
 
-                                    if (bomberman.getSpriteNum() == 3)
-                                        bomberman.setSprite(Sprite.player_up_2.getFxImage());
+                                        if (bomberman.getSpriteNum() == 3)
+                                            bomberman.setSprite(Sprite.player_up_2.getFxImage());
 
-                                    Sound.walking();
+                                        Sound.walking();
+
+                                    }
                                     break;
                                 }
                                 case DOWN: {
-                                    bomberman.moveDown();
-                                    if (bomberman.getSpriteNum() == 1)
-                                        bomberman.setSprite(Sprite.player_down.getFxImage());
+                                    if(bomberSpeed < bomberman.getSpeed()) {
+                                        bomberman.moveDown();
+                                        if (bomberman.getSpriteNum() == 1)
+                                            bomberman.setSprite(Sprite.player_down.getFxImage());
 
-                                    if (bomberman.getSpriteNum() == 2)
-                                        bomberman.setSprite(Sprite.player_down_1.getFxImage());
+                                        if (bomberman.getSpriteNum() == 2)
+                                            bomberman.setSprite(Sprite.player_down_1.getFxImage());
 
-                                    if (bomberman.getSpriteNum() == 3)
-                                        bomberman.setSprite(Sprite.player_down_2.getFxImage());
+                                        if (bomberman.getSpriteNum() == 3)
+                                            bomberman.setSprite(Sprite.player_down_2.getFxImage());
 
-                                    Sound.walking();
+                                        Sound.walking();
+
+                                    }
                                     break;
                                 }
                                 case LEFT: {
-                                    bomberman.moveLeft();
-                                    if (bomberman.getSpriteNum() == 1)
-                                        bomberman.setSprite(Sprite.player_left.getFxImage());
+                                    if(bomberSpeed < bomberman.getSpeed()) {
+                                        bomberman.moveLeft();
+                                        if (bomberman.getSpriteNum() == 1)
+                                            bomberman.setSprite(Sprite.player_left.getFxImage());
 
-                                    if (bomberman.getSpriteNum() == 2)
-                                        bomberman.setSprite(Sprite.player_left_1.getFxImage());
+                                        if (bomberman.getSpriteNum() == 2)
+                                            bomberman.setSprite(Sprite.player_left_1.getFxImage());
 
-                                    if (bomberman.getSpriteNum() == 3)
-                                        bomberman.setSprite(Sprite.player_left_2.getFxImage());
+                                        if (bomberman.getSpriteNum() == 3)
+                                            bomberman.setSprite(Sprite.player_left_2.getFxImage());
 
-                                    Sound.walking();
+                                        Sound.walking();
+
+                                    }
                                     break;
                                 }
                                 case RIGHT: {
-                                    bomberman.moveRight();
-                                    if (bomberman.getSpriteNum() == 1)
-                                        bomberman.setSprite(Sprite.player_right.getFxImage());
+                                    if(bomberSpeed < bomberman.getSpeed()) {
+                                        bomberman.moveRight();
+                                        if (bomberman.getSpriteNum() == 1)
+                                            bomberman.setSprite(Sprite.player_right.getFxImage());
 
-                                    if (bomberman.getSpriteNum() == 2)
-                                        bomberman.setSprite(Sprite.player_right_1.getFxImage());
+                                        if (bomberman.getSpriteNum() == 2)
+                                            bomberman.setSprite(Sprite.player_right_1.getFxImage());
 
-                                    if (bomberman.getSpriteNum() == 3)
-                                        bomberman.setSprite(Sprite.player_right_2.getFxImage());
+                                        if (bomberman.getSpriteNum() == 3)
+                                            bomberman.setSprite(Sprite.player_right_2.getFxImage());
 
-                                    Sound.walking();
+                                        Sound.walking();
+
+                                    }
                                     break;
                                 }
                                 case SPACE: {
@@ -143,7 +155,7 @@ public class BombermanGame extends Application {
                                 }
 
                             }
-                        }
+
 
                         CompletableFuture.delayedExecutor(120, TimeUnit.MILLISECONDS).execute(() -> bomberSpeed--);
                     }
@@ -154,9 +166,11 @@ public class BombermanGame extends Application {
         mainStage.show();
         //stage.show();
 
-        Sound.startJingle();
+//        Sound.startJingle();
+        Sound.gameStart();
 
         // play background music
+        Sound.backgroundNoise();
         CompletableFuture.delayedExecutor(3, TimeUnit.SECONDS).execute(Sound::backgroundMusic);
 
 
@@ -173,11 +187,13 @@ public class BombermanGame extends Application {
             }
         };
         bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
+
         bomberman.setLife(false);
         timer.start();
 
 
     }
+
 
     public void update() {
         itemsList.forEach(Entity::update);

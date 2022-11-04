@@ -1,5 +1,7 @@
 package uet.oop.bomberman.Level;
 
+import uet.oop.bomberman.control.Sound;
+
 import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.entities.Portal.isPortal;
 public class LevelUp {
@@ -12,18 +14,21 @@ public class LevelUp {
                     isPortal = false;
                     entities.remove(portal);
                     new Level1();
+                    Sound.startJingle();
                     break;
                 }
                 case 1: {
                     isPortal = false;
                     entities.remove(portal);
                     new Level2();
+                    Sound.startJingle();
                     break;
                 }
                 case 2: {
                     isPortal = false;
                     entities.remove(portal);
                     new Level3();
+                    Sound.startJingle();
                     break;
                 }
                 case 3: {

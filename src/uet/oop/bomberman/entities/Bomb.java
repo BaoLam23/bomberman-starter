@@ -77,6 +77,7 @@ public class Bomb extends Entity {
                     killObjects.add(flameTop);
                 }
                 breakBrick(x, y);
+                breakVase(x, y);
             });
 
             CompletableFuture.delayedExecutor(4, TimeUnit.SECONDS).execute(() -> {
@@ -158,7 +159,6 @@ public class Bomb extends Entity {
 
     private static void breakBrick(int x, int y) {
         Brick b1 = null, b2 = null, b3 = null, b4 = null;
-        Vase v1 = null, v2 = null, v3 = null, v4 = null;
         for (Entity e : stillObjects) {
             if (e instanceof Brick) {
                 if (Math.round(e.getX() / 32) == x - 1 && Math.round(e.getY() / 32) == y) {
@@ -172,20 +172,6 @@ public class Bomb extends Entity {
                 }
                 if (Math.round(e.getX() / 32) == x && Math.round(e.getY() / 32) == y - 1) {
                     b4 = (Brick) e;
-                }
-            }
-            if (e instanceof Vase) {
-                if (Math.round(e.getX() / 32) == x - 1 && Math.round(e.getY() / 32) == y) {
-                    v1 = (Vase) e;
-                }
-                if (Math.round(e.getX() / 32) == x + 1 && Math.round(e.getY() / 32) == y) {
-                    v2 = (Vase) e;
-                }
-                if (Math.round(e.getX() / 32) == x && Math.round(e.getY() / 32) == y + 1) {
-                    v3 = (Vase) e;
-                }
-                if (Math.round(e.getX() / 32) == x && Math.round(e.getY() / 32) == y - 1) {
-                    v4 = (Vase) e;
                 }
             }
         }
@@ -209,6 +195,47 @@ public class Bomb extends Entity {
             b4.setSpriteNum(1);
         }
 
+        Brick finalB = b1;
+        Brick finalB1 = b2;
+        Brick finalB2 = b3;
+        Brick finalB3 = b4;
+        CompletableFuture.delayedExecutor(2, TimeUnit.SECONDS).execute(() -> {
+            if (finalB != null) {
+                stillObjects.remove(finalB);
+            }
+
+            if (finalB1 != null) {
+                stillObjects.remove(finalB1);
+            }
+
+            if (finalB2 != null) {
+                stillObjects.remove(finalB2);
+            }
+
+            if (finalB3 != null){
+                stillObjects.remove(finalB3);
+            }
+        });
+    }
+
+    private static void breakVase(int x, int y) {
+        Vase v1 = null, v2 = null, v3 = null, v4 = null;
+        for (Entity e : stillObjects) {
+            if (e instanceof Vase) {
+                if (Math.round(e.getX() / 32) == x - 1 && Math.round(e.getY() / 32) == y) {
+                    v1 = (Vase) e;
+                }
+                if (Math.round(e.getX() / 32) == x + 1 && Math.round(e.getY() / 32) == y) {
+                    v2 = (Vase) e;
+                }
+                if (Math.round(e.getX() / 32) == x && Math.round(e.getY() / 32) == y + 1) {
+                    v3 = (Vase) e;
+                }
+                if (Math.round(e.getX() / 32) == x && Math.round(e.getY() / 32) == y - 1) {
+                    v4 = (Vase) e;
+                }
+            }
+        }
         if (v1 != null) {
             v1.isBroken = true;
             v1.setSpriteNum(1);
@@ -229,23 +256,26 @@ public class Bomb extends Entity {
             v4.setSpriteNum(1);
         }
 
-        Brick finalB = b1;
-        Brick finalB1 = b2;
-        Brick finalB2 = b3;
-        Brick finalB3 = b4;
-        Vase finalV1 = v1;
-        Vase finalV = v2;
+        Vase finalV = v1;
+        Vase finalV1 = v2;
         Vase finalV2 = v3;
         Vase finalV3 = v4;
         CompletableFuture.delayedExecutor(2, TimeUnit.SECONDS).execute(() -> {
-            if (finalB != null) stillObjects.remove(finalB);
-            if (finalB1 != null) stillObjects.remove(finalB1);
-            if (finalB2 != null) stillObjects.remove(finalB2);
-            if (finalB3 != null) stillObjects.remove(finalB3);
-            if (finalV1 != null) stillObjects.remove(finalV1);
-            if (finalV != null) stillObjects.remove(finalV);
-            if (finalV2 != null) stillObjects.remove(finalV2);
-            if (finalV3 != null) stillObjects.remove(finalV3);
+            if (finalV != null) {
+                stillObjects.remove(finalV);
+            }
+
+            if (finalV1 != null) {
+                stillObjects.remove(finalV1);
+            }
+
+            if (finalV2 != null) {
+                stillObjects.remove(finalV2);
+            }
+
+            if (finalV3 != null){
+                stillObjects.remove(finalV3);
+            }
         });
     }
 }

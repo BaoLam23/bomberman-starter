@@ -3,10 +3,17 @@ package uet.oop.bomberman.control;
 import javafx.scene.media.AudioClip;
 
 public class Sound {
-    public static void backgroundMusic() {
-        AudioClip buzzer = new AudioClip(Sound.class.getResource("/sounds/background.mp3").toExternalForm());
+    public static void backgroundNoise() {
+        AudioClip buzzer = new AudioClip(Sound.class.getResource("/sounds/BG Noise.mp3").toExternalForm());
         buzzer.setCycleCount(AudioClip.INDEFINITE);
-        buzzer.setVolume(0.2);
+        //buzzer.setVolume(0.2);
+        buzzer.play();
+    }
+
+    public static void backgroundMusic() {
+        AudioClip buzzer = new AudioClip(Sound.class.getResource("/sounds/BG Music.mp3").toExternalForm());
+        buzzer.setCycleCount(AudioClip.INDEFINITE);
+        //buzzer.setVolume(0.2);
         buzzer.play();
     }
 
@@ -26,8 +33,16 @@ public class Sound {
     }
 
     public static void walking() {
-        AudioClip walking = new AudioClip(Sound.class.getResource("/sounds/Effects/Walking 1.wav").toExternalForm());
-        walking.setVolume(0.7);
+        int random = (int) (Math.random() * 2 + 1);
+        String path;
+        if(random == 1)
+            path = "/sounds/Effects/Walking 1.wav";
+        else
+            path = "/sounds/Effects/Walking 2.wav";
+
+        AudioClip walking = new AudioClip(Sound.class.getResource(path).toExternalForm());
+
+        walking.setVolume(0.3);
         walking.play();
     }
 
@@ -38,13 +53,18 @@ public class Sound {
 
     public static void enemyDying() {
         AudioClip dying = new AudioClip(Sound.class.getResource("/sounds/Effects/Enemy Dies.wav").toExternalForm());
+        dying.setVolume(0.5);
         dying.play();
     }
 
     public static void startJingle() {
-        AudioClip jingle = new AudioClip(Sound.class.getResource("/sounds/Effects/Match Start Jingle.wav").toExternalForm());
-        jingle.setVolume(0.5);
+        AudioClip jingle = new AudioClip(Sound.class.getResource("/sounds/Effects/Start Jingle.wav").toExternalForm());
         jingle.play();
+    }
+
+    public static void gameStart() {
+        AudioClip gameStart = new AudioClip(Sound.class.getResource("/sounds/Effects/Game Start.wav").toExternalForm());
+        gameStart.play();
     }
 }
 

@@ -79,6 +79,7 @@ public class Bomber extends Animal {
 
             bombKillPlayer((Bomber) bomberman);
             Image gameOver = new Image(new File("res/textures/gameOver.png").toURI().toString());
+
             authorView.setImage(gameOver);
 
             if (!root.getChildren().contains(authorView)) {
