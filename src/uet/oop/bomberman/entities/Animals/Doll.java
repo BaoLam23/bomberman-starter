@@ -58,6 +58,7 @@ public class Doll extends Animal {
                 setSprite(Sprite.doll_left3.getFxImage());
         }
         checkBomb(this);
+        checkTrap(this);
         if (!this.isLife()) {
             this.bombKillDoll();
         }

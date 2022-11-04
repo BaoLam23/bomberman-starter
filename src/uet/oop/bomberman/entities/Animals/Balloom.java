@@ -54,6 +54,7 @@ public class Balloom extends Animal {
                 setSprite(Sprite.balloom_left3.getFxImage());
         }
         checkBomb(this);
+        checkTrap(this);
         if (!this.isLife()) {
             this.bombKillBalloom();
         }

@@ -70,6 +70,7 @@ public class Oneal extends Animal {
     @Override
     public void update() {
         checkBomb(this);
+        checkTrap(this);
         if (!this.isLife()) {
             this.bombKillOnel();
         }

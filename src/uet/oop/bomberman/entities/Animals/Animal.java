@@ -2,10 +2,7 @@ package uet.oop.bomberman.entities.Animals;
 
 import javafx.scene.image.Image;
 import uet.oop.bomberman.control.Blocked;
-import uet.oop.bomberman.entities.Bomb;
-import uet.oop.bomberman.entities.Entity;
-import uet.oop.bomberman.entities.Flame;
-import uet.oop.bomberman.entities.Grass;
+import uet.oop.bomberman.entities.*;
 import uet.oop.bomberman.entities.Items.Bombpass;
 import uet.oop.bomberman.graphics.Sprite;
 
@@ -103,6 +100,23 @@ public abstract class Animal extends Entity {
             } else if (entity instanceof Bomb) {
                 if (entity.getX() == animal.getX() && entity.getY() == animal.getY() && exploded) {
                     animal.setLife(false);
+                }
+            }
+        }
+        if (!animal.isLife()) {
+            Entity object = new Grass(animal.getX() / 32, animal.getY() / 32, Sprite.skull.getFxImage());
+            stillObjects.add(object);
+        }
+    }
+    public void checkTrap(Animal animal) {
+        if (animal instanceof Bomber) {
+            return;
+        }
+        for (Entity entity : killObjects) {
+            if (entity instanceof Trap) {
+                if (entity.getX() == animal.getX() && entity.getY() == animal.getY()) {
+                    animal.setLife(false);
+                    killObjects.remove(entity);
                 }
             }
         }

@@ -68,6 +68,7 @@ public class Minvo extends Animal {
     @Override
     public void update() {
         checkBomb(this);
+        checkTrap(this);
         if (!this.isLife()) {
             this.bombKillMinvo();
         }

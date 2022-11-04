@@ -13,6 +13,7 @@ public class Level2 {
         bomberman.setSprite(Sprite.player_right.getFxImage());
         bomberman.setX(32);
         bomberman.setY(32);
+        numOfTraps = 3;
         entities.clear();
         stillObjects.clear();
         killObjects.clear();

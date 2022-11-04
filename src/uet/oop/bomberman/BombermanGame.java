@@ -50,6 +50,7 @@ public class BombermanGame extends Application {
     public static Stage mainStage = null;
 
     private int bomberSpeed = 0;
+    public static int numOfTraps = 3;
     public static void main(String[] args) {
         Application.launch(BombermanGame.class);
     }
@@ -151,6 +152,10 @@ public class BombermanGame extends Application {
                                 }
                                 case SPACE: {
                                     Bomb.putBomb();
+                                    break;
+                                }
+                                case SHIFT: {
+                                    Trap.putTrap();
                                     break;
                                 }
 
