@@ -127,6 +127,7 @@ public class CreateMap {
                             stillObjects.add(object);
                             break;
                         }
+
                         default: {
                             object = new Grass(j, i, Grass.selectGrass());
                             stillObjects.add(object);
