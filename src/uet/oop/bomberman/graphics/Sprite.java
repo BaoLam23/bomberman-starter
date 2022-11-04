@@ -38,10 +38,12 @@ public class Sprite {
 	public static Sprite vase = new Sprite(DEFAULT_SIZE, 8, 0, SpriteSheet.tiles, 16, 16);
 	public static Sprite vase_broken = new Sprite(DEFAULT_SIZE, 8, 1, SpriteSheet.tiles, 16, 16);
 	public static Sprite vase_broken2 = new Sprite(DEFAULT_SIZE, 8, 2, SpriteSheet.tiles, 16, 16);
-	public static Sprite web_top_left = new Sprite(DEFAULT_SIZE, 4, 2, SpriteSheet.tiles, 16, 16);
-	public static Sprite web_top_right = new Sprite(DEFAULT_SIZE, 5, 2, SpriteSheet.tiles, 16, 16);
-	public static Sprite web_bottom_left = new Sprite(DEFAULT_SIZE, 4, 3, SpriteSheet.tiles, 16, 16);
-	public static Sprite web_bottom_right = new Sprite(DEFAULT_SIZE, 5, 3, SpriteSheet.tiles, 16, 16);
+
+	public static Sprite trap = new Sprite(DEFAULT_SIZE, 9, 10, SpriteSheet.tiles, 16, 16);
+	public static Sprite trap1 = new Sprite(DEFAULT_SIZE, 10, 10, SpriteSheet.tiles, 16, 16);
+	public static Sprite trap2 = new Sprite(DEFAULT_SIZE, 11, 10, SpriteSheet.tiles, 16, 16);
+	public static Sprite trap3 = new Sprite(DEFAULT_SIZE, 12, 10, SpriteSheet.tiles, 16, 16);
+
 
 	
 	/*

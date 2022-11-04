@@ -62,16 +62,13 @@ public class Bomb extends Entity {
                     killObjects.add(flameLeft);
                 }
 
-
                 if (canExplode(x + 1, y)) {
                     killObjects.add(flameRight);
                 }
 
-
                 if (canExplode(x , y + 1)) {
                     killObjects.add(flameDown);
                 }
-
 
                 if (canExplode(x, y - 1)) {
                     killObjects.add(flameTop);
@@ -82,7 +79,22 @@ public class Bomb extends Entity {
 
             CompletableFuture.delayedExecutor(4, TimeUnit.SECONDS).execute(() -> {
                 hasBomb = false;
-                killObjects.clear();
+                if (canExplode(x - 1, y)) {
+                    killObjects.remove(flameLeft);
+                }
+
+                if (canExplode(x + 1, y)) {
+                    killObjects.remove(flameRight);
+                }
+
+                if (canExplode(x , y + 1)) {
+                    killObjects.remove(flameDown);
+                }
+
+                if (canExplode(x, y - 1)) {
+                    killObjects.remove(flameTop);
+                }
+                killObjects.remove(bomb);
                 stillObjects.remove(bomb);
             });
         }

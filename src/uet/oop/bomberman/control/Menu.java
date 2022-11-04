@@ -18,7 +18,7 @@ import static uet.oop.bomberman.BombermanGame.*;
 
 public class Menu {
     private static ImageView statusGame;
-    public static Text level, time, traps;
+    public static Text level, time, traps, info;
     private static int timeNumber;
     private static int timeChanger = 0;
 
@@ -49,6 +49,12 @@ public class Menu {
         traps.setX(230);
         traps.setY(20);
 
+        info = new Text("SPACE for Bombs, SHIFT for Traps");
+        info.setFont(Font.loadFont("file:res/fonts/PixeloidSansBold-RpeJo.ttf", 14));
+        info.setFill(Color.WHITE);
+        info.setX(500);
+        info.setY(20);
+
         Image newGame = new Image(new File("res/textures/start.png").toURI().toString());
         statusGame = new ImageView(newGame);
         statusGame.setX(850);
@@ -57,7 +63,7 @@ public class Menu {
         statusGame.setScaleY(0.5);
 
         Pane pane = new Pane();
-        pane.getChildren().addAll(level, time, traps, statusGame);
+        pane.getChildren().addAll(level, time, traps, info, statusGame);
         pane.setMinSize(Sprite.SCALED_SIZE * WIDTH, 20);
         pane.setStyle("-fx-background-color: black");
 

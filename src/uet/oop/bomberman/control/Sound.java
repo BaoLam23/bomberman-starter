@@ -84,6 +84,12 @@ public class Sound {
         explosion.play();
     }
 
+    public static void trapPlaced() {
+        AudioClip explosion = new AudioClip(Sound.class.getResource("/sounds/Effects/Trap Activating.wav").toExternalForm());
+        //explosion.setVolume(0.5);
+        explosion.play();
+    }
+
 
     /*
 	|--------------------------------------------------------------------------
@@ -100,7 +106,7 @@ public class Sound {
     public static void vaseBreaking() {
         AudioClip vase = new AudioClip(Sound.class.getResource("/sounds/Effects/Vase Breaking.wav").toExternalForm());
         vase.play();
-        vase.setVolume(0.1);
+        //vase.setVolume(0.1);
     }
 
 
