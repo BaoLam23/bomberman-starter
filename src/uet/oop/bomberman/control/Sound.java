@@ -20,7 +20,7 @@ public class Sound {
     public static void backgroundMusic() {
         AudioClip buzzer = new AudioClip(Sound.class.getResource("/sounds/BG Music.mp3").toExternalForm());
         buzzer.setCycleCount(AudioClip.INDEFINITE);
-        buzzer.setVolume(0.7);
+        buzzer.setVolume(0.5);
         buzzer.play();
     }
 
@@ -34,6 +34,21 @@ public class Sound {
         AudioClip gameStart = new AudioClip(Sound.class.getResource("/sounds/Effects/Game Start.wav").toExternalForm());
         gameStart.play();
         gameStart.setVolume(0.5);
+    }
+
+    public static void sixtySecs() {
+        AudioClip countdown = new AudioClip(Sound.class.getResource("/sounds/Effects/60 Secs.wav").toExternalForm());
+        countdown.play();
+    }
+
+    public static void thirtySecs() {
+        AudioClip countdown = new AudioClip(Sound.class.getResource("/sounds/Effects/30 Secs.wav").toExternalForm());
+        countdown.play();
+    }
+
+    public static void tenSecs() {
+        AudioClip countdown = new AudioClip(Sound.class.getResource("/sounds/Effects/10 Secs.wav").toExternalForm());
+        countdown.play();
     }
 
     /*

@@ -6,10 +6,7 @@ import uet.oop.bomberman.entities.Animals.Balloom;
 import uet.oop.bomberman.entities.Animals.Doll;
 import uet.oop.bomberman.entities.Animals.Minvo;
 import uet.oop.bomberman.entities.Animals.Oneal;
-import uet.oop.bomberman.entities.Items.Bombpass;
-import uet.oop.bomberman.entities.Items.ExtraTime;
-import uet.oop.bomberman.entities.Items.Random;
-import uet.oop.bomberman.entities.Items.Wallpass;
+import uet.oop.bomberman.entities.Items.*;
 import uet.oop.bomberman.graphics.Sprite;
 
 import java.awt.*;
@@ -55,7 +52,15 @@ public class CreateMap {
                         case '#': {
 //                            object = new Grass(j, i, Sprite.grass.getFxImage());
 //                            stillObjects.add(object);
-                            if(i !=0 && j != 0 && i != R - 1 && j != C - 1)
+                            if (i == R - 1)
+                                object = new Wall(j, i, Sprite.wall_bottom.getFxImage());
+
+                            else if (i == 0 && j == 2)
+                                object = new Wall(j, i, Sprite.gate_left.getFxImage());
+                            else if (i == 0 && j == 3)
+                                object = new Wall(j, i, Sprite.gate_right.getFxImage());
+
+                            else if(i !=0 && j != 0 && i != R - 1 && j != C - 1)
                                 object = new Wall(j, i, Wall.selectWall());
                             else
                                 object = new Wall(j, i, Sprite.wall.getFxImage());
@@ -112,6 +117,15 @@ public class CreateMap {
                             stillObjects.add(object);
                             break;
                         }
+
+                        case 'f': {
+                            object = new Flamepass(j, i, Sprite.powerup_flames.getFxImage());
+                            itemsList.add(object);
+                            object = new Vase(j, i, Sprite.vase.getFxImage());
+                            stillObjects.add(object);
+                            break;
+                        }
+
                         case '?': {
                             object = new Random(j, i, Sprite.powerup_random.getFxImage());
                             itemsList.add(object);
@@ -127,6 +141,14 @@ public class CreateMap {
                             break;
                         }
 
+                        case '^': {
+                            object = new ExtraTrap(j, i, Sprite.powerup_extratrap.getFxImage());
+                            itemsList.add(object);
+                            object = new Vase(j, i, Sprite.vase.getFxImage());
+                            stillObjects.add(object);
+                            break;
+                        }
+
                         default: {
                             object = new Grass(j, i, Grass.selectGrass());
                             stillObjects.add(object);
@@ -134,6 +156,7 @@ public class CreateMap {
                     }
                 }
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -30,6 +30,7 @@ public class Menu {
         return timeNumber;
     }
 
+
     public static void createMenu(Group root) {
         level = new Text("Level:");
         level.setFont(Font.loadFont("file:res/fonts/PixeloidSansBold-RpeJo.ttf", 14));
@@ -89,6 +90,16 @@ public class Menu {
                 timeChanger = 0;
             }
         }
+
+        if (timeNumber == 60 && timeChanger == 0)
+            Sound.sixtySecs();
+
+        if (timeNumber == 30 && timeChanger == 0)
+            Sound.thirtySecs();
+
+        if (timeNumber == 10 && timeChanger == 0)
+            Sound.tenSecs();
+
         level.setText("Level: " + _level);
         time.setText("Time: " + timeNumber);
         traps.setText("Traps Left: " + numOfTraps);

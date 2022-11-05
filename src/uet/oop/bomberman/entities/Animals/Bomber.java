@@ -75,7 +75,7 @@ public class Bomber extends Animal {
             authorView.setImage(gameOver);
 
             if (!root.getChildren().contains(authorView)) {
-                root.getChildren().add(authorView);
+                //root.getChildren().add(authorView);
             }
         }
     }

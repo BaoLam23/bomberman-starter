@@ -66,7 +66,7 @@ public class Doll extends Animal {
         moveNum++;
 
         int dir = (int) (Math.random() * 4 + 1);
-        if(moveNum > 60) {
+        if(moveNum > 120) {
             switch (dir) {
                 case 1: {
                     this.moveLeft();
