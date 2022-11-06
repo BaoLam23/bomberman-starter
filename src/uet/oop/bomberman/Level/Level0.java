@@ -8,6 +8,7 @@ import static uet.oop.bomberman.control.Menu.setTimeNumber;
 public class Level0 {
     public Level0() {
         bomberman.setLife(true);
+        bomberman.setNumOfLives(3);
         bomberman.setThrough(false);
         bomberman.setBombPass(false);
         bomberman.setSprite(Sprite.player_right.getFxImage());

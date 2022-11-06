@@ -163,6 +163,14 @@ public class CreateMap {
                             break;
                         }
 
+                        case 'l': {
+                            object = new ExtraLife(j, i, Sprite.powerup_extralife.getFxImage());
+                            itemsList.add(object);
+                            object = new Vase(j, i, Sprite.vase.getFxImage());
+                            stillObjects.add(object);
+                            break;
+                        }
+
                         default: {
                             object = new Grass(j, i, Grass.selectGrass());
                             stillObjects.add(object);

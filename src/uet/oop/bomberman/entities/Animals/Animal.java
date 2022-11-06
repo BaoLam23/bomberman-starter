@@ -8,11 +8,13 @@ import uet.oop.bomberman.graphics.Sprite;
 
 import static uet.oop.bomberman.BombermanGame.killObjects;
 import static uet.oop.bomberman.BombermanGame.stillObjects;
+import static uet.oop.bomberman.entities.Animals.Bomber.loseLife;
 import static uet.oop.bomberman.entities.Bomb.exploded;
 import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
 
 public abstract class Animal extends Entity {
     private boolean life = true;
+    private int numOfLives = 3;
     private boolean through = false;
     private boolean bombPass = false;
 
@@ -39,6 +41,15 @@ public abstract class Animal extends Entity {
     public boolean isLife() {
         return life;
     }
+
+    public void setNumOfLives(int numOfLives) {
+        this.numOfLives = numOfLives;
+    }
+
+    public int getNumOfLives() {
+        return numOfLives;
+    }
+
     public void setThrough(boolean through) {
         this.through = through;
     }
@@ -95,11 +106,19 @@ public abstract class Animal extends Entity {
         for (Entity entity : killObjects) {
             if (entity instanceof Flame) {
                 if (entity.getX() == animal.getX() && entity.getY() == animal.getY()) {
-                    animal.setLife(false);
+                    if (animal instanceof Bomber) {
+                        loseLife();
+                    } else {
+                        animal.setLife(false);
+                    }
                 }
             } else if (entity instanceof Bomb) {
                 if (entity.getX() == animal.getX() && entity.getY() == animal.getY() && exploded) {
-                    animal.setLife(false);
+                    if (animal instanceof Bomber) {
+                        loseLife();
+                    } else {
+                        animal.setLife(false);
+                    }
                 }
             }
         }

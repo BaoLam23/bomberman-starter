@@ -18,7 +18,7 @@ import static uet.oop.bomberman.BombermanGame.*;
 
 public class Menu {
     private static ImageView statusGame;
-    public static Text level, time, traps, info;
+    public static Text level, time, lives, traps, info;
     private static int timeNumber;
     private static int timeChanger = 0;
 
@@ -44,16 +44,22 @@ public class Menu {
         time.setX(120);
         time.setY(20);
 
-        traps = new Text("Traps Left:");
+        lives = new Text("Lives:");
+        lives.setFont(Font.loadFont("file:res/fonts/PixeloidSansBold-RpeJo.ttf", 14));
+        lives.setFill(Color.WHITE);
+        lives.setX(230);
+        lives.setY(20);
+
+        traps = new Text("Traps:");
         traps.setFont(Font.loadFont("file:res/fonts/PixeloidSansBold-RpeJo.ttf", 14));
         traps.setFill(Color.WHITE);
-        traps.setX(230);
+        traps.setX(330);
         traps.setY(20);
 
         info = new Text("SPACE for Bombs, SHIFT for Traps");
         info.setFont(Font.loadFont("file:res/fonts/PixeloidSansBold-RpeJo.ttf", 14));
         info.setFill(Color.WHITE);
-        info.setX(500);
+        info.setX(520);
         info.setY(20);
 
         Image newGame = new Image(new File("res/textures/start.png").toURI().toString());
@@ -64,7 +70,7 @@ public class Menu {
         statusGame.setScaleY(0.5);
 
         Pane pane = new Pane();
-        pane.getChildren().addAll(level, time, traps, info, statusGame);
+        pane.getChildren().addAll(level, time, lives, traps, info, statusGame);
         pane.setMinSize(Sprite.SCALED_SIZE * WIDTH, 20);
         pane.setStyle("-fx-background-color: black");
 
@@ -102,7 +108,8 @@ public class Menu {
 
         level.setText("Level: " + _level);
         time.setText("Time: " + timeNumber);
-        traps.setText("Traps Left: " + numOfTraps);
+        lives.setText("Lives: " + bomberman.getNumOfLives());
+        traps.setText("Traps: " + numOfTraps);
 
         if (bomberman.isLife())
             if (running) {
