@@ -81,10 +81,10 @@ public class BombermanGame extends Application {
                     public void handle(KeyEvent e)
                     {
                         bomberSpeed++;
-
+                        if (true) {
                             switch (e.getCode()) {
                                 case UP: {
-                                    if(bomberSpeed < bomberman.getSpeed()) {
+                                    if (bomberSpeed < bomberman.getSpeed()) {
                                         bomberman.moveUp();
                                         if (bomberman.getSpriteNum() == 1)
                                             bomberman.setSprite(Sprite.player_up.getFxImage());
@@ -101,7 +101,7 @@ public class BombermanGame extends Application {
                                     break;
                                 }
                                 case DOWN: {
-                                    if(bomberSpeed < bomberman.getSpeed()) {
+                                    if (bomberSpeed < bomberman.getSpeed()) {
                                         bomberman.moveDown();
                                         if (bomberman.getSpriteNum() == 1) {
                                             bomberman.setSprite(Sprite.player_down.getFxImage());
@@ -127,7 +127,7 @@ public class BombermanGame extends Application {
                                     break;
                                 }
                                 case LEFT: {
-                                    if(bomberSpeed < bomberman.getSpeed()) {
+                                    if (bomberSpeed < bomberman.getSpeed()) {
                                         bomberman.moveLeft();
                                         if (bomberman.getSpriteNum() == 1) {
                                             bomberman.setSprite(Sprite.player_left.getFxImage());
@@ -153,7 +153,7 @@ public class BombermanGame extends Application {
                                     break;
                                 }
                                 case RIGHT: {
-                                    if(bomberSpeed < bomberman.getSpeed()) {
+                                    if (bomberSpeed < bomberman.getSpeed()) {
                                         bomberman.moveRight();
                                         if (bomberman.getSpriteNum() == 1) {
                                             bomberman.setSprite(Sprite.player_right.getFxImage());
@@ -190,8 +190,8 @@ public class BombermanGame extends Application {
                             }
 
 
-                        CompletableFuture.delayedExecutor(120, TimeUnit.MILLISECONDS).execute(() -> bomberSpeed--);
-
+                            CompletableFuture.delayedExecutor(120, TimeUnit.MILLISECONDS).execute(() -> bomberSpeed--);
+                        }
                     }
 
 
@@ -227,12 +227,10 @@ public class BombermanGame extends Application {
         bomberman.setLife(false);
         timer.start();
 
-
     }
 
 
     public void update() {
-        System.out.println(Flamepass.getRemainingPasses());
 
         itemsList.forEach(Entity::update);
         entities.forEach(Entity::update);

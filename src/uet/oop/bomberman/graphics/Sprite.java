@@ -47,6 +47,13 @@ public class Sprite {
 	public static Sprite trap2 = new Sprite(DEFAULT_SIZE, 11, 10, SpriteSheet.tiles, 16, 16);
 	public static Sprite trap3 = new Sprite(DEFAULT_SIZE, 12, 10, SpriteSheet.tiles, 16, 16);
 
+	public static Sprite torch = new Sprite(DEFAULT_SIZE, 9, 3, SpriteSheet.tiles, 16, 16);
+	public static Sprite torch1 = new Sprite(DEFAULT_SIZE, 10, 3, SpriteSheet.tiles, 16, 16);
+	public static Sprite torch2 = new Sprite(DEFAULT_SIZE, 11, 3, SpriteSheet.tiles, 16, 16);
+
+	public static Sprite flag = new Sprite(DEFAULT_SIZE, 9, 4, SpriteSheet.tiles, 16, 16);
+	public static Sprite flag1 = new Sprite(DEFAULT_SIZE, 10, 4, SpriteSheet.tiles, 16, 16);
+	public static Sprite flag2 = new Sprite(DEFAULT_SIZE, 11, 4, SpriteSheet.tiles, 16, 16);
 
 	
 	/*

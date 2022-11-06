@@ -10,7 +10,7 @@ public class Wall extends Entity {
     }
 
     public static Image selectWall() {
-        int tmp = (int) (Math.random() * 15 + 1);
+        int tmp = (int) (Math.random() * 30 + 1);
         Image img = null;
         switch (tmp) {
             case 1: {

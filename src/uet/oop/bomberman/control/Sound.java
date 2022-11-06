@@ -20,7 +20,7 @@ public class Sound {
     public static void backgroundMusic() {
         AudioClip buzzer = new AudioClip(Sound.class.getResource("/sounds/BG Music.mp3").toExternalForm());
         buzzer.setCycleCount(AudioClip.INDEFINITE);
-        buzzer.setVolume(0.5);
+        buzzer.setVolume(0.4);
         buzzer.play();
     }
 

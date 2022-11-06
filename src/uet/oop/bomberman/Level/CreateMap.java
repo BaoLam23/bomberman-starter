@@ -1,15 +1,15 @@
 package uet.oop.bomberman.Level;
 
-import javafx.scene.image.Image;
 import uet.oop.bomberman.entities.*;
 import uet.oop.bomberman.entities.Animals.Balloom;
 import uet.oop.bomberman.entities.Animals.Doll;
 import uet.oop.bomberman.entities.Animals.Minvo;
 import uet.oop.bomberman.entities.Animals.Oneal;
+import uet.oop.bomberman.entities.Decor.Flag;
+import uet.oop.bomberman.entities.Decor.Torch;
 import uet.oop.bomberman.entities.Items.*;
 import uet.oop.bomberman.graphics.Sprite;
 
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -72,6 +72,20 @@ public class CreateMap {
                             object = new Grass(j, i, Sprite.grass.getFxImage());
                             stillObjects.add(object);
                             object = new Brick(j, i, Sprite.brick.getFxImage());
+                            stillObjects.add(object);
+                            break;
+                        }
+                        case '&': {
+                            object = new Wall(j, i, Sprite.wall.getFxImage());
+                            stillObjects.add(object);
+                            object = new Torch(j, i, Sprite.torch.getFxImage());
+                            stillObjects.add(object);
+                            break;
+                        }
+                        case '%': {
+                            object = new Wall(j, i, Sprite.wall.getFxImage());
+                            stillObjects.add(object);
+                            object = new Flag(j, i, Sprite.flag.getFxImage());
                             stillObjects.add(object);
                             break;
                         }

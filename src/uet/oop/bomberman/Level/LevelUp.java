@@ -1,6 +1,7 @@
 package uet.oop.bomberman.Level;
 
 import uet.oop.bomberman.control.Sound;
+import uet.oop.bomberman.entities.Items.Flamepass;
 
 import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.entities.Portal.isPortal;
@@ -9,6 +10,7 @@ public class LevelUp {
 
     public static void levelUp() {
         if (win) {
+            Flamepass.setRemainingPasses(0);
             switch (_level) {
                 case 0: {
                     isPortal = false;

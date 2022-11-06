@@ -1,6 +1,7 @@
 package uet.oop.bomberman.entities;
 
 import javafx.scene.image.Image;
+import uet.oop.bomberman.Level.LevelUp;
 import uet.oop.bomberman.control.Sound;
 import uet.oop.bomberman.entities.Items.Flamepass;
 import uet.oop.bomberman.graphics.Sprite;
@@ -99,6 +100,9 @@ public class Bomb extends Entity {
                         killObjects.add(flameTop2);
                     }
                 }
+
+                if(LevelUp.win)
+                    killObjects.clear();
 
                 breakBrick(x, y);
                 breakVase(x, y);
