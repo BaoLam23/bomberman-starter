@@ -6,8 +6,10 @@ import uet.oop.bomberman.entities.*;
 import uet.oop.bomberman.entities.Items.Bombpass;
 import uet.oop.bomberman.graphics.Sprite;
 
-import static uet.oop.bomberman.BombermanGame.killObjects;
-import static uet.oop.bomberman.BombermanGame.stillObjects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+
+import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.entities.Animals.Bomber.loseLife;
 import static uet.oop.bomberman.entities.Bomb.exploded;
 import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
@@ -17,6 +19,7 @@ public abstract class Animal extends Entity {
     private int numOfLives = 3;
     private boolean through = false;
     private boolean bombPass = false;
+    protected static boolean invincible = false;
 
     private int speed = 2;
 
@@ -102,12 +105,18 @@ public abstract class Animal extends Entity {
             x += SCALED_SIZE;
         }
     }
+
+    public void makeInvincible() {
+        invincible = true;
+        CompletableFuture.delayedExecutor(2, TimeUnit.SECONDS).execute(() -> invincible = false);
+    }
     public void checkBomb(Animal animal) {
         for (Entity entity : killObjects) {
             if (entity instanceof Flame) {
                 if (entity.getX() == animal.getX() && entity.getY() == animal.getY()) {
                     if (animal instanceof Bomber) {
-                        loseLife();
+                        if (!invincible)
+                            loseLife();
                     } else {
                         animal.setLife(false);
                     }
@@ -115,7 +124,8 @@ public abstract class Animal extends Entity {
             } else if (entity instanceof Bomb) {
                 if (entity.getX() == animal.getX() && entity.getY() == animal.getY() && exploded) {
                     if (animal instanceof Bomber) {
-                        loseLife();
+                        if (!invincible)
+                            loseLife();
                     } else {
                         animal.setLife(false);
                     }

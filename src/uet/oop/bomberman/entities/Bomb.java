@@ -3,7 +3,7 @@ package uet.oop.bomberman.entities;
 import javafx.scene.image.Image;
 import uet.oop.bomberman.Level.LevelUp;
 import uet.oop.bomberman.control.Sound;
-import uet.oop.bomberman.entities.Items.Flamepass;
+import uet.oop.bomberman.entities.Items.FlameSpread;
 import uet.oop.bomberman.graphics.Sprite;
 
 import java.util.concurrent.CompletableFuture;
@@ -83,7 +83,7 @@ public class Bomb extends Entity {
                     killObjects.add(flameTop);
                 }
 
-                if(Flamepass.getRemainingPasses() > 0) {
+                if(FlameSpread.getRemainingPasses() > 0) {
                     if (canExplode(x - 2, y) && canExplode(x - 1, y)) {
                         killObjects.add(flameLeft2);
                     }
@@ -126,8 +126,8 @@ public class Bomb extends Entity {
                     killObjects.remove(flameTop);
                 }
 
-                if(Flamepass.getRemainingPasses() > 0) {
-                    Flamepass.setRemainingPasses(Flamepass.getRemainingPasses() - 1);
+                if(FlameSpread.getRemainingPasses() > 0) {
+                    FlameSpread.setRemainingPasses(FlameSpread.getRemainingPasses() - 1);
 
                     if (canExplode(x - 2, y) && canExplode(x - 1, y)) {
                         killObjects.remove(flameLeft2);
@@ -294,7 +294,7 @@ public class Bomb extends Entity {
             b4.setSpriteNum(1);
         }
 
-        if (Flamepass.getRemainingPasses() > 0) {
+        if (FlameSpread.getRemainingPasses() > 0) {
             if (b5 != null) {
                 b5.isBroken = true;
                 b5.setSpriteNum(1);
@@ -343,7 +343,7 @@ public class Bomb extends Entity {
                 stillObjects.remove(finalB4);
             }
 
-            if (Flamepass.getRemainingPasses() > 0) {
+            if (FlameSpread.getRemainingPasses() > 0) {
                 if (finalB5 != null) {
                     stillObjects.remove(finalB5);
                 }
@@ -419,7 +419,7 @@ public class Bomb extends Entity {
             Sound.vaseBreaking();
         }
 
-        if (Flamepass.getRemainingPasses() > 0) {
+        if (FlameSpread.getRemainingPasses() > 0) {
             if (v5 != null) {
                 v5.isBroken = true;
                 v5.setSpriteNum(1);
@@ -472,7 +472,7 @@ public class Bomb extends Entity {
                 stillObjects.remove(finalV4);
             }
 
-            if (Flamepass.getRemainingPasses() > 0) {
+            if (FlameSpread.getRemainingPasses() > 0) {
                 if (finalV5 != null) {
                     stillObjects.remove(finalV5);
                 }

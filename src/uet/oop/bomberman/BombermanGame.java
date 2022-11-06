@@ -22,7 +22,7 @@ import uet.oop.bomberman.control.Sound;
 import uet.oop.bomberman.entities.*;
 import uet.oop.bomberman.entities.Animals.Animal;
 import uet.oop.bomberman.entities.Animals.Bomber;
-import uet.oop.bomberman.entities.Items.Flamepass;
+import uet.oop.bomberman.entities.Items.FlameSpread;
 import uet.oop.bomberman.graphics.Sprite;
 import static uet.oop.bomberman.Level.LevelUp.levelUp;
 import static uet.oop.bomberman.Level.LevelUp.win;
@@ -86,14 +86,23 @@ public class BombermanGame extends Application {
                                 case UP: {
                                     if (bomberSpeed < bomberman.getSpeed()) {
                                         bomberman.moveUp();
-                                        if (bomberman.getSpriteNum() == 1)
+                                        if (bomberman.getSpriteNum() == 1) {
                                             bomberman.setSprite(Sprite.player_up.getFxImage());
+                                            if (FlameSpread.getRemainingPasses() > 0)
+                                                bomberman.setSprite(Sprite.player_up_blue.getFxImage());
+                                        }
 
-                                        if (bomberman.getSpriteNum() == 2)
+                                        if (bomberman.getSpriteNum() == 2) {
                                             bomberman.setSprite(Sprite.player_up_1.getFxImage());
+                                            if (FlameSpread.getRemainingPasses() > 0)
+                                                bomberman.setSprite(Sprite.player_up_blue1.getFxImage());
+                                        }
 
-                                        if (bomberman.getSpriteNum() == 3)
+                                        if (bomberman.getSpriteNum() == 3) {
                                             bomberman.setSprite(Sprite.player_up_2.getFxImage());
+                                            if (FlameSpread.getRemainingPasses() > 0)
+                                                bomberman.setSprite(Sprite.player_up_blue2.getFxImage());
+                                        }
 
                                         Sound.walking();
 
@@ -105,19 +114,19 @@ public class BombermanGame extends Application {
                                         bomberman.moveDown();
                                         if (bomberman.getSpriteNum() == 1) {
                                             bomberman.setSprite(Sprite.player_down.getFxImage());
-                                            if (Flamepass.getRemainingPasses() > 0)
+                                            if (FlameSpread.getRemainingPasses() > 0)
                                                 bomberman.setSprite(Sprite.player_down_blue.getFxImage());
                                         }
 
                                         if (bomberman.getSpriteNum() == 2) {
                                             bomberman.setSprite(Sprite.player_down_1.getFxImage());
-                                            if (Flamepass.getRemainingPasses() > 0)
+                                            if (FlameSpread.getRemainingPasses() > 0)
                                                 bomberman.setSprite(Sprite.player_down_1_blue.getFxImage());
                                         }
 
                                         if (bomberman.getSpriteNum() == 3) {
                                             bomberman.setSprite(Sprite.player_down_2.getFxImage());
-                                            if (Flamepass.getRemainingPasses() > 0)
+                                            if (FlameSpread.getRemainingPasses() > 0)
                                                 bomberman.setSprite(Sprite.player_down_2_blue.getFxImage());
                                         }
 
@@ -131,19 +140,19 @@ public class BombermanGame extends Application {
                                         bomberman.moveLeft();
                                         if (bomberman.getSpriteNum() == 1) {
                                             bomberman.setSprite(Sprite.player_left.getFxImage());
-                                            if (Flamepass.getRemainingPasses() > 0)
+                                            if (FlameSpread.getRemainingPasses() > 0)
                                                 bomberman.setSprite(Sprite.player_left_blue.getFxImage());
                                         }
 
                                         if (bomberman.getSpriteNum() == 2) {
                                             bomberman.setSprite(Sprite.player_left_1.getFxImage());
-                                            if (Flamepass.getRemainingPasses() > 0)
+                                            if (FlameSpread.getRemainingPasses() > 0)
                                                 bomberman.setSprite(Sprite.player_left_1_blue.getFxImage());
                                         }
 
                                         if (bomberman.getSpriteNum() == 3) {
                                             bomberman.setSprite(Sprite.player_left_2.getFxImage());
-                                            if (Flamepass.getRemainingPasses() > 0)
+                                            if (FlameSpread.getRemainingPasses() > 0)
                                                 bomberman.setSprite(Sprite.player_left_2_blue.getFxImage());
                                         }
 
@@ -157,19 +166,19 @@ public class BombermanGame extends Application {
                                         bomberman.moveRight();
                                         if (bomberman.getSpriteNum() == 1) {
                                             bomberman.setSprite(Sprite.player_right.getFxImage());
-                                            if (Flamepass.getRemainingPasses() > 0)
+                                            if (FlameSpread.getRemainingPasses() > 0)
                                                 bomberman.setSprite(Sprite.player_right_blue.getFxImage());
                                         }
 
                                         if (bomberman.getSpriteNum() == 2) {
                                             bomberman.setSprite(Sprite.player_right_1.getFxImage());
-                                            if (Flamepass.getRemainingPasses() > 0)
+                                            if (FlameSpread.getRemainingPasses() > 0)
                                                 bomberman.setSprite(Sprite.player_right_1_blue.getFxImage());
                                         }
 
                                         if (bomberman.getSpriteNum() == 3) {
                                             bomberman.setSprite(Sprite.player_right_2.getFxImage());
-                                            if (Flamepass.getRemainingPasses() > 0)
+                                            if (FlameSpread.getRemainingPasses() > 0)
                                                 bomberman.setSprite(Sprite.player_right_2_blue.getFxImage());
                                         }
 
@@ -207,6 +216,7 @@ public class BombermanGame extends Application {
 
         // play background music
         Sound.backgroundNoise();
+        Sound.backgroundNoise2();
         CompletableFuture.delayedExecutor(3, TimeUnit.SECONDS).execute(Sound::backgroundMusic);
 
 

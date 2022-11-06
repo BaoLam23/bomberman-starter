@@ -81,6 +81,8 @@ public class Sprite {
 	public static Sprite player_down_blue = new Sprite(DEFAULT_SIZE, 17, 0, SpriteSheet.tiles, 12, 15);
 	public static Sprite player_left_blue = new Sprite(DEFAULT_SIZE, 18, 0, SpriteSheet.tiles, 10, 15);
 	public static Sprite player_right_blue = new Sprite(DEFAULT_SIZE, 16, 0, SpriteSheet.tiles, 10, 16);
+	public static Sprite player_up_blue = new Sprite(DEFAULT_SIZE, 15, 0, SpriteSheet.tiles, 12, 15);
+
 
 	public static Sprite player_down_1_blue = new Sprite(DEFAULT_SIZE, 17, 1, SpriteSheet.tiles, 12, 15);
 	public static Sprite player_down_2_blue = new Sprite(DEFAULT_SIZE, 17, 2, SpriteSheet.tiles, 12, 16);
@@ -90,10 +92,15 @@ public class Sprite {
 
 	public static Sprite player_right_1_blue = new Sprite(DEFAULT_SIZE, 16, 1, SpriteSheet.tiles, 11, 16);
 	public static Sprite player_right_2_blue = new Sprite(DEFAULT_SIZE, 16, 2, SpriteSheet.tiles, 12, 16);
+
+	public static Sprite player_up_blue1 = new Sprite(DEFAULT_SIZE, 15, 1, SpriteSheet.tiles, 16, 16);
+	public static Sprite player_up_blue2 = new Sprite(DEFAULT_SIZE, 15, 2, SpriteSheet.tiles, 16, 16);
 	
 	public static Sprite player_dead1 = new Sprite(DEFAULT_SIZE, 4, 4, SpriteSheet.tiles, 14, 16);
 	public static Sprite player_dead2 = new Sprite(DEFAULT_SIZE, 5, 4, SpriteSheet.tiles, 13, 15);
 	public static Sprite player_dead3 = new Sprite(DEFAULT_SIZE, 6, 4, SpriteSheet.tiles, 16, 16);
+
+	public static Sprite transparent = new Sprite(DEFAULT_SIZE, 15, 15, SpriteSheet.tiles, 13, 15);
 	
 	/*
 	|--------------------------------------------------------------------------
@@ -152,9 +159,8 @@ public class Sprite {
 	public static Sprite kondoria_dead = new Sprite(DEFAULT_SIZE, 10, 8, SpriteSheet.tiles, 16, 16);
 	
 	//ALL
-	public static Sprite mob_dead1 = new Sprite(DEFAULT_SIZE, 15, 0, SpriteSheet.tiles, 16, 16);
-	public static Sprite mob_dead2 = new Sprite(DEFAULT_SIZE, 15, 1, SpriteSheet.tiles, 16, 16);
-	public static Sprite mob_dead3 = new Sprite(DEFAULT_SIZE, 15, 2, SpriteSheet.tiles, 16, 16);
+
+
 	
 	/*
 	|--------------------------------------------------------------------------

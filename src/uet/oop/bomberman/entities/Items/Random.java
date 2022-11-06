@@ -1,6 +1,7 @@
 package uet.oop.bomberman.entities.Items;
 
 import javafx.scene.image.Image;
+import uet.oop.bomberman.control.Menu;
 import uet.oop.bomberman.control.Sound;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.Grass;
@@ -30,7 +31,7 @@ public class Random extends Item {
                     itemsList.remove(entity);
                     Entity object = new Grass(x / 32, y / 32, Sprite.grass.getFxImage());
                     stillObjects.add(object);
-                    int random = (int) (Math.random() * 2 + 1);
+                    int random = (int) (Math.random() * 6 + 1);
                     switch (random) {
                         case 1: {
                             bomberman.setBombPass(true);
@@ -38,6 +39,22 @@ public class Random extends Item {
                         }
                         case 2: {
                             bomberman.setThrough(true);
+                            break;
+                        }
+                        case 3: {
+                            bomberman.setNumOfLives(bomberman.getNumOfLives() + 1);
+                            break;
+                        }
+                        case 4: {
+                            Menu.setTimeNumber(Menu.getTimeNumber() + 10);
+                            break;
+                        }
+                        case 5: {
+                            numOfTraps++;
+                            break;
+                        }
+                        case 6: {
+                            FlameSpread.setRemainingPasses(5);
                             break;
                         }
                     }

@@ -133,7 +133,7 @@ public class CreateMap {
                         }
 
                         case 'f': {
-                            object = new Flamepass(j, i, Sprite.powerup_flames.getFxImage());
+                            object = new FlameSpread(j, i, Sprite.powerup_flames.getFxImage());
                             itemsList.add(object);
                             object = new Vase(j, i, Sprite.vase.getFxImage());
                             stillObjects.add(object);

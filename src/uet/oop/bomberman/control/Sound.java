@@ -13,7 +13,13 @@ public class Sound {
     public static void backgroundNoise() {
         AudioClip buzzer = new AudioClip(Sound.class.getResource("/sounds/BG Noise.mp3").toExternalForm());
         buzzer.setCycleCount(AudioClip.INDEFINITE);
-        //buzzer.setVolume(0.2);
+        buzzer.play();
+    }
+
+    public static void backgroundNoise2() {
+        AudioClip buzzer = new AudioClip(Sound.class.getResource("/sounds/BG Noise 2.mp3").toExternalForm());
+        buzzer.setCycleCount(AudioClip.INDEFINITE);
+        buzzer.setVolume(0.6);
         buzzer.play();
     }
 
@@ -51,6 +57,27 @@ public class Sound {
         countdown.play();
     }
 
+    public static void Five() {
+        AudioClip countdown = new AudioClip(Sound.class.getResource("/sounds/Effects/Five.wav").toExternalForm());
+        countdown.play();
+    }
+    public static void Four() {
+        AudioClip countdown = new AudioClip(Sound.class.getResource("/sounds/Effects/Four.wav").toExternalForm());
+        countdown.play();
+    }
+    public static void Three() {
+        AudioClip countdown = new AudioClip(Sound.class.getResource("/sounds/Effects/Three.wav").toExternalForm());
+        countdown.play();
+    }
+    public static void Two() {
+        AudioClip countdown = new AudioClip(Sound.class.getResource("/sounds/Effects/Two.wav").toExternalForm());
+        countdown.play();
+    }
+    public static void One() {
+        AudioClip countdown = new AudioClip(Sound.class.getResource("/sounds/Effects/One.wav").toExternalForm());
+        countdown.play();
+    }
+
     /*
 	|--------------------------------------------------------------------------
 	| Player Sounds
@@ -74,6 +101,11 @@ public class Sound {
     public static void dying() {
         AudioClip dying = new AudioClip(Sound.class.getResource("/sounds/Effects/Die.wav").toExternalForm());
         dying.play();
+    }
+
+    public static void takingDamage() {
+        AudioClip dmg = new AudioClip(Sound.class.getResource("/sounds/Effects/Taking Damage.wav").toExternalForm());
+        dmg.play();
     }
 
     public static void powerUp() {

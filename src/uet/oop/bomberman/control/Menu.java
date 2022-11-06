@@ -106,6 +106,17 @@ public class Menu {
         if (timeNumber == 10 && timeChanger == 0)
             Sound.tenSecs();
 
+        if (timeNumber == 5 && timeChanger == 0)
+            Sound.Five();
+        if (timeNumber == 4 && timeChanger == 0)
+            Sound.Four();
+        if (timeNumber == 3 && timeChanger == 0)
+            Sound.Three();
+        if (timeNumber == 2 && timeChanger == 0)
+            Sound.Two();
+        if (timeNumber == 1 && timeChanger == 0)
+            Sound.One();
+
         level.setText("Level: " + _level);
         time.setText("Time: " + timeNumber);
         lives.setText("Lives: " + bomberman.getNumOfLives());
