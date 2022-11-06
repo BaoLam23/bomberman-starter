@@ -3,6 +3,7 @@ package uet.oop.bomberman.entities.Animals;
 import javafx.scene.image.Image;
 import uet.oop.bomberman.control.Sound;
 import uet.oop.bomberman.entities.Entity;
+import uet.oop.bomberman.entities.Items.FlameSpread;
 import uet.oop.bomberman.graphics.Sprite;
 
 import java.io.File;
@@ -81,14 +82,22 @@ public class Bomber extends Animal {
         }
 
         if (invincible) {
-            if (getSpriteNum() == 1)
+            if (getSpriteNum() == 1) {
                 setSprite(Sprite.player_right.getFxImage());
+                if (FlameSpread.getRemainingPasses() > 0)
+                    setSprite(Sprite.player_right_blue.getFxImage());
+            }
 
-            if (getSpriteNum() == 2)
+            if (getSpriteNum() == 2) {
                 setSprite(Sprite.transparent.getFxImage());
 
-            if (getSpriteNum() == 3)
+            }
+
+            if (getSpriteNum() == 3) {
                 setSprite(Sprite.player_right.getFxImage());
+                if (FlameSpread.getRemainingPasses() > 0)
+                    setSprite(Sprite.player_right_blue.getFxImage());
+            }
         }
 
         if (!bomberman.isLife()) {

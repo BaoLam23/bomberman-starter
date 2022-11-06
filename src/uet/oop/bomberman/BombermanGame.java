@@ -216,8 +216,11 @@ public class BombermanGame extends Application {
 
         // play background music
         Sound.backgroundNoise();
-        Sound.backgroundNoise2();
-        CompletableFuture.delayedExecutor(3, TimeUnit.SECONDS).execute(Sound::backgroundMusic);
+
+        CompletableFuture.delayedExecutor(5, TimeUnit.SECONDS).execute(() -> {
+            Sound.backgroundMusic();
+            Sound.backgroundNoise2();
+        });
 
 
 
