@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.control.Menu.getTimeNumber;
+import static uet.oop.bomberman.control.Menu.setTimeNumber;
 
 public class Bomber extends Animal {
 
@@ -57,6 +58,7 @@ public class Bomber extends Animal {
     public void checkTime() {
         if (getTimeNumber() == 0) {
             loseLife();
+            setTimeNumber(getTimeNumber() + 20);
         }
     }
     @Override

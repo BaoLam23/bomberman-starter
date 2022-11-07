@@ -98,11 +98,6 @@ public class Sound {
         walking.play();
     }
 
-    public static void dying() {
-        AudioClip dying = new AudioClip(Sound.class.getResource("/sounds/Effects/Die.wav").toExternalForm());
-        dying.play();
-    }
-
     public static void takingDamage() {
         AudioClip dmg = new AudioClip(Sound.class.getResource("/sounds/Effects/Taking Damage.wav").toExternalForm());
         dmg.play();
