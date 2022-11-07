@@ -21,6 +21,7 @@ public abstract class Animal extends Entity {
     private boolean bombPass = false;
     protected static boolean invincible = false;
 
+
     private int speed = 2;
 
     private int countToRun = 0; //delay khi di chuyen

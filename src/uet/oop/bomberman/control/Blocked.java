@@ -3,6 +3,7 @@ package uet.oop.bomberman.control;
 import uet.oop.bomberman.entities.Animals.Animal;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.Grass;
+import uet.oop.bomberman.entities.Vase;
 import uet.oop.bomberman.entities.Wall;
 
 import static uet.oop.bomberman.BombermanGame.stillObjects;
@@ -16,6 +17,10 @@ public class Blocked {
                     if (e.getY() == 0 && animal.getY() - SCALED_SIZE == e.getY()) {
                         return true;
                     }
+                }
+                if (e instanceof Vase) {
+                    if (animal.getX() == e.getX() && animal.getY() - SCALED_SIZE == e.getY())
+                        return true;
                 }
             }
             return false;
@@ -36,6 +41,10 @@ public class Blocked {
                     if (e.getY() == 384 && animal.getY() + SCALED_SIZE == e.getY()) {
                         return true;
                     }
+                }
+                if (e instanceof Vase) {
+                    if (animal.getX() == e.getX() && animal.getY() + SCALED_SIZE == e.getY())
+                        return true;
                 }
             }
             return false;
@@ -58,6 +67,10 @@ public class Blocked {
                         return true;
                     }
                 }
+                if (e instanceof Vase) {
+                    if (animal.getX() - SCALED_SIZE == e.getX() && animal.getY() == e.getY())
+                        return true;
+                }
             }
             return false;
         }
@@ -78,6 +91,10 @@ public class Blocked {
                     if (e.getX() == 960 && animal.getX() + SCALED_SIZE == e.getX()) {
                         return true;
                     }
+                }
+                if (e instanceof Vase) {
+                    if (animal.getX() + SCALED_SIZE == e.getX() && animal.getY()== e.getY())
+                        return true;
                 }
             }
             return false;
